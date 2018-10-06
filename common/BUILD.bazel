@@ -1,0 +1,6 @@
+cc_library(
+  name = "domain_types",
+  hdrs = ["domain_types.h"],
+  visibility = ["//visibility:public"]
+)
+  
