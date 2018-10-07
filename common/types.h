@@ -16,6 +16,11 @@ enum class MatrixAxisType {
   kCol = 1,
 };
 
+enum class ProcessType {
+  kStationary = 0,
+  kNonStationary = 1,
+};
+
 } // namespace types
 } // namespace common
 } // namespace mnyrve
