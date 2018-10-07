@@ -13,6 +13,7 @@ cc_library(
     name = "incremental_average",
     hdrs = ["incremental_average.h"],
     deps = [
+        "//common:macros",
         "//common:types",
         "//third_party/Eigen:eigen",
     ],
