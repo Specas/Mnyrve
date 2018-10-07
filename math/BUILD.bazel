@@ -1,0 +1,10 @@
+cc_library(
+    name = "matrix_math",
+    hdrs = [
+        "matrix_checks.h"
+    ],
+    deps = [
+        "//common:types",
+    ],
+    visibility = ["//visibility:public"],
+)
