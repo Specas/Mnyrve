@@ -18,7 +18,7 @@ namespace macros {
       std::cerr << "Assertion failed inside function: " <<\
         __FUNCTION__ << std::endl;\
       std::cerr << "Failed with message: " << #error_message << std::endl;\
-      exit(0);\
+      exit(-1);\
     }\
   }
 #endif
@@ -31,9 +31,21 @@ namespace macros {
       std::cerr << "Requirement failed inside function: " <<\
         __FUNCTION__ << std::endl;\
       std::cerr << "Failed with message: " << #error_message << std::endl;\
-      exit(0);\
+      exit(-2);\
     }\
 }\
+
+#define MN_WARNING(condition, warning_message) {\
+  if(condition) {\
+    std::cerr << "----------Warning----------" << std::endl;\
+    std::cerr << "Warning in file: " << __FILE__ << std::endl;\
+    std::cerr << "Warning at line: " << __LINE__ << std::endl;\
+    std::cerr << "Warning inside function: " <<\
+      __FUNCTION__ << std::endl;\
+    std::cerr << "Warning message: " << #warning_message << std::endl;\
+  }\
+}\
+
 
 
 } // macros
