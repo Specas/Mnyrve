@@ -8,3 +8,13 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "incremental_average",
+    hdrs = ["incremental_average.h"],
+    deps = [
+        "//common:types",
+        "//third_party/Eigen:eigen",
+    ],
+    visibility = ["//visibility:public"],
+)
