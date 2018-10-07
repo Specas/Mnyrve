@@ -3,6 +3,7 @@
 #endif
 
 #include "common/domain_types.h"
+#include "third_party/Eigen/Dense"
 
 namespace mnyrve {
 namespace constructs {

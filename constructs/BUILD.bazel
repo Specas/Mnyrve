@@ -1,9 +1,10 @@
 cc_library(
-  name = "markov_process",
-  srcs = ["markov_process.cc"],
-  hdrs = ["markov_process.h"],
-  deps = [
-      "//common:domain_types",
-  ],
-  visibility = ["//visibility:public"],
+    name = "markov_process",
+    srcs = ["markov_process.cc"],
+    hdrs = ["markov_process.h"],
+    deps = [
+        "//common:domain_types",
+        "//third_party/Eigen:eigen",
+    ],
+    visibility = ["//visibility:public"],
 )
