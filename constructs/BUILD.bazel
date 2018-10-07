@@ -1,9 +1,11 @@
 cc_library(
-    name = "markov_process",
-    srcs = ["markov_process.cc"],
-    hdrs = ["markov_process.h"],
+    name = "discrete_markov_process",
+    srcs = ["discrete_markov_process.cc"],
+    hdrs = ["discrete_markov_process.h"],
     deps = [
-        "//common:domain_types",
+        "//common:macros",
+        "//common:types",
+        "//math:matrix_math",
         "//third_party/Eigen:eigen",
     ],
     visibility = ["//visibility:public"],
