@@ -1,6 +1,14 @@
 cc_library(
-    name = "domain_types",
-    hdrs = ["domain_types.h"],
+    name = "types",
+    hdrs = ["types.h",],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "macros",
+    hdrs = [
+        "error_macros.h",
+    ],
     visibility = ["//visibility:public"],
 )
   

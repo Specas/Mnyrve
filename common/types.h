@@ -1,17 +1,24 @@
-#ifndef DOMAIN_TYPES_H
-#define DOMAIN_TYPES_H
-#endif 
+#ifndef CUSTOM_TYPES_H
+#define CUSTOM_TYPES_H
+//#pragma once
 
 namespace mnyrve {
 namespace common {
 namespace types {
 
-enum DomainType {
+enum class DomainType {
   kDiscrete = 0, 
   kContinuous = 1,
+};
+
+enum class MatrixAxisType {
+  kRow = 0, 
+  kCol = 1,
 };
 
 } // namespace types
 } // namespace common
 } // namespace mnyrve
+
+#endif
 
