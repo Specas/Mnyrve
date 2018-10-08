@@ -1,3 +1,2 @@
-build --cxxopt='-std=c++1y'
+build --cxxopt='-std=c++14'
 build --verbose_failures
-build --sandbox_debug

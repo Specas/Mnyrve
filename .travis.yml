@@ -14,14 +14,8 @@ before_install:
   - chmod +x bazel-0.17.2-installer-linux-x86_64.sh
   - ./bazel-0.17.2-installer-linux-x86_64.sh --user
   - export PATH="$PATH:$HOME/bin"  
+  - sed -i 's/c++14/c++1y/g' tools/bazel.rc
 
 script:
-  - bazel build //common:types
-  - bazel build //common:macros
-  - bazel build //math:matrix_math
-  - bazel build //math:incremental_average
-  - bazel build //constructs:discrete_markov_process
-  - bazel build //third_party/Eigen:eigen
-  - bazel build //math/test:incremental_average_test
-  - bazel test //math/test:incremental_average_test
-  #- bazel build ...
+  - bazel build ...
+  - bazel test ...
