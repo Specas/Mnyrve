@@ -1,0 +1,21 @@
+cc_library(
+    name = "matrix_math",
+    hdrs = [
+        "matrix_checks.h"
+    ],
+    deps = [
+        "//common:types",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "incremental_average",
+    hdrs = ["incremental_average.h"],
+    deps = [
+        "//common:macros",
+        "//common:types",
+        "//third_party/Eigen:eigen",
+    ],
+    visibility = ["//visibility:public"],
+)

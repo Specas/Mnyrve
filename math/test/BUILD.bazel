@@ -1,0 +1,12 @@
+cc_test(
+    name = "incremental_average_test",
+    srcs = ["incremental_average_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//common:macros",
+        "//common:types", 
+        "//math:incremental_average",
+        "//third_party/Eigen:eigen",
+    ]
+)
