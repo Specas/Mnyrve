@@ -1,14 +1,13 @@
 dist: trusty
 language: cpp
+sudo: required
+
 
 before_install:
-  - sudo apt-get install -y openjdk-8-jdk
-
-install:
-  - echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
-  - curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add - 
-  - sudo apt-get update && sudo apt-get install bazel
-  - sudo apt-get upgrade bazel
+  - wget https://github.com/bazelbuild/bazel/releases/download/0.17.2/bazel-0.17.2-installer-linux-x86_64.sh 
+  - chmod +x bazel-0.17.2-installer-linux-x86_64.sh
+  - ./bazel-0.17.2-installer-linux-x86_64.sh --user
+  - export PATH="$PATH:$HOME/bin"  
 
 script:
   - bazel build ...
