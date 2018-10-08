@@ -10,11 +10,13 @@ addons:
       - pkg-config
 
 before_install:
-  - wget https://github.com/bazelbuild/bazel/releases/download/0.14.0/bazel-0.14.0-installer-linux-x86_64.sh 
-  - chmod +x bazel-0.14.0-installer-linux-x86_64.sh
-  - ./bazel-0.14.0-installer-linux-x86_64.sh --user
+  - wget https://github.com/bazelbuild/bazel/releases/download/0.17.2/bazel-0.17.2-installer-linux-x86_64.sh 
+  - chmod +x bazel-0.17.2-installer-linux-x86_64.sh
+  - ./bazel-0.17.2-installer-linux-x86_64.sh --user
   - export PATH="$PATH:$HOME/bin"  
 
 script:
-  - bazel build ...
-  - bazel test ...
+  - bazel build //common:types
+  - bazel build //common:macros
+  - bazel build //math:matrix_math
+  - bazel build //math:incremental_average
