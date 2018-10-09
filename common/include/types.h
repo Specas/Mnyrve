@@ -21,6 +21,11 @@ enum class ProcessType {
   kNonStationary = 1,
 };
 
+enum class DistributionType {
+  kUniform = 0,
+  kNormal = 0,
+};
+
 } // namespace types
 } // namespace common
 } // namespace mnyrve
