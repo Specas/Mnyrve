@@ -14,7 +14,6 @@ namespace {
 class IncrementalAverageTest : public ::testing::Test {
 
   protected:
-
     IncrementalAverageTest() {
 
     }

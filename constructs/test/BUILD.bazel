@@ -1,11 +1,11 @@
 cc_test(
-    name = "incremental_average_test",
-    srcs = ["incremental_average_test.cc"],
+    name = "discrete_oracle_test",
+    srcs = ["discrete_oracle_test.cc"],
     copts = ["-Iexternal/gtest/include"],
     deps = [
         "@gtest//:main", 
         "//common:types", 
-        "//math:incremental_average",
+        "//constructs:discrete_oracle",
         "//third_party/Eigen:eigen",
     ]
 )

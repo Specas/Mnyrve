@@ -11,3 +11,15 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "discrete_oracle",
+    srcs = ["src/discrete_oracle.cc"],
+    hdrs = ["include/discrete_oracle.h"],
+    copts = ["-Iconstructs/include"],
+    deps = [
+        "//common:macros",
+        "//third_party/Eigen:eigen",
+    ],
+    visibility = ["//visibility:public"],
+)
