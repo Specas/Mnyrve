@@ -1,8 +1,8 @@
 #ifndef INCREMENTAL_AVERAGE_H
 #define INCREMENTAL_AVERAGE_H
 
-#include "common/error_macros.h"
-#include "common/types.h"
+#include "common/include/error_macros.h"
+#include "common/include/types.h"
 #include "third_party/Eigen/Dense"
 
 #include <map>

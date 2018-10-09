@@ -1,14 +1,18 @@
 cc_library(
     name = "types",
-    hdrs = ["types.h",],
+    hdrs = [
+        "include/types.h",
+    ],
+    copts = ["-Icommon/include"],
     visibility = ["//visibility:public"],
 )
 
 cc_library(
     name = "macros",
     hdrs = [
-        "error_macros.h",
+        "include/error_macros.h",
     ],
+    copts = ["-Icommon/include"],
     visibility = ["//visibility:public"],
 )
   

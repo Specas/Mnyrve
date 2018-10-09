@@ -1,7 +1,7 @@
 #ifndef MATRIX_CHECKS_H
 #define MATRIX_CHECKS_H
 
-#include "common/types.h"
+#include "common/include/types.h"
 #include "third_party/Eigen/Dense"
 
 namespace mnyrve {

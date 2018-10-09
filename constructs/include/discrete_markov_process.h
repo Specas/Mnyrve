@@ -1,9 +1,9 @@
 #ifndef DISCRETE_MARKOV_PROCESS_H
 #define DISCRETE_MARKOV_PROCESS_H
 
-#include "common/error_macros.h"
-#include "common/types.h"
-#include "math/matrix_checks.h"
+#include "common/include/error_macros.h"
+#include "common/include/types.h"
+#include "math/include/matrix_checks.h"
 #include "third_party/Eigen/Dense"
 
 #include <iostream>

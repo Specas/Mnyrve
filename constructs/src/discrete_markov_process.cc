@@ -1,4 +1,4 @@
-#include "constructs/discrete_markov_process.h"
+#include "constructs/include/discrete_markov_process.h"
 
 
 using mnyrve::math::IsStochasticMatrix;

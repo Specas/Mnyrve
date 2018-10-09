@@ -1,8 +1,9 @@
 cc_library(
     name = "matrix_math",
     hdrs = [
-        "matrix_checks.h"
+        "include/matrix_checks.h"
     ],
+    copts = ["-Imath/include"],
     deps = [
         "//common:types",
     ],
@@ -11,7 +12,10 @@ cc_library(
 
 cc_library(
     name = "incremental_average",
-    hdrs = ["incremental_average.h"],
+    hdrs = [
+        "include/incremental_average.h"
+    ],
+    copts = ["-Imath/include"],
     deps = [
         "//common:macros",
         "//common:types",

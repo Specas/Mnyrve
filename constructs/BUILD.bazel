@@ -1,7 +1,8 @@
 cc_library(
     name = "discrete_markov_process",
-    srcs = ["discrete_markov_process.cc"],
-    hdrs = ["discrete_markov_process.h"],
+    srcs = ["src/discrete_markov_process.cc"],
+    hdrs = ["include/discrete_markov_process.h"],
+    copts = ["-Iconstructs/include"],
     deps = [
         "//common:macros",
         "//common:types",
