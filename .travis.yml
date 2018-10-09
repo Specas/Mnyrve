@@ -3,18 +3,21 @@ language: cpp
 sudo: required
 
 addons:
-  apd:
+  apt:
     sources:
       - ubuntu-toolchain-r-test
     packages:
       - pkg-config
+      - gcc-5
+      - g++-5
 
 before_install:
   - wget https://github.com/bazelbuild/bazel/releases/download/0.17.2/bazel-0.17.2-installer-linux-x86_64.sh 
   - chmod +x bazel-0.17.2-installer-linux-x86_64.sh
   - ./bazel-0.17.2-installer-linux-x86_64.sh --user
   - export PATH="$PATH:$HOME/bin"  
-  - sed -i 's/c++14/c++1y/g' tools/bazel.rc
+  - sudo unlink /usr/bin/gcc && sudo ln -s /usr/bin/gcc-5 /usr/bin/gcc
+  - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-5 /usr/bin/g++
 
 script:
   - bazel build ...
