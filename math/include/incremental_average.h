@@ -20,26 +20,26 @@ class IncrementalAverage {
 
       process_type_ = process_type;
       num_variables_ = num_variables;
-      averages_ = Eigen::Matrix<T, Eigen::Dynamic, 1>::Zero(
+      averages_ = Eigen::VectorXd::Zero(
           num_variables_, 1);
-      update_count_ = Eigen::Matrix<double, Eigen::Dynamic, 1>::Ones(
+      update_count_ = Eigen::VectorXd::Ones(
           num_variables_, 1);
 
     }
 
     IncrementalAverage(
         mnyrve::common::types::ProcessType process_type,
-        Eigen::Matrix<T, Eigen::Dynamic, 1> averages) {
+        Eigen::VectorXd averages) {
 
       process_type_ = process_type;
       num_variables_ = averages.rows();
       averages_ = averages;
-      update_count_ = Eigen::Matrix<double, Eigen::Dynamic, 1>::Ones(
+      update_count_ = Eigen::VectorXd::Ones(
           num_variables_, 1);
 
     }
 
-    void Update(Eigen::Matrix<T, Eigen::Dynamic, 1> observation) {
+    void Update(Eigen::VectorXd observation) {
 
       MN_REQUIRE((observation.rows() == num_variables_),
           "Observation size should equal the initialized variable size.");
@@ -47,14 +47,14 @@ class IncrementalAverage {
       if(process_type_ == mnyrve::common::types::ProcessType::kStationary) {
 
         update_count_ = update_count_ + 
-          Eigen::Matrix<T, Eigen::Dynamic, 1>::Ones(num_variables_, 1);
-        Eigen::Matrix<T, Eigen::Dynamic, 1> residue = 
+          Eigen::VectorXd::Ones(num_variables_, 1);
+        Eigen::VectorXd residue = 
           (observation.array() - averages_.array())/update_count_.array();
         averages_ = averages_ + residue;
 
       } else {
 
-        Eigen::Matrix<T, Eigen::Dynamic, 1> residue = 
+        Eigen::VectorXd residue = 
           (observation.array() - averages_.array())*update_count_.array();
         averages_ = averages_ + residue;
       }
@@ -90,12 +90,12 @@ class IncrementalAverage {
           "Trying to set a constant step size to track a stationary process.");
 
       update_count_ =
-        Eigen::Matrix<double, Eigen::Dynamic, 1>::Constant(
+        Eigen::VectorXd::Constant(
             num_variables_, 1, step_size);
 
     }
 
-    void SetAverages(Eigen::Matrix<T, Eigen::Dynamic, 1> averages) {
+    void SetAverages(Eigen::VectorXd averages) {
 
       MN_REQUIRE(
           (averages.size() == num_variables_), 
@@ -105,7 +105,7 @@ class IncrementalAverage {
 
     }
 
-    Eigen::Matrix<T, Eigen::Dynamic, 1> GetAverages() {
+    Eigen::VectorXd GetAverages() {
 
      return averages_;
 
@@ -117,7 +117,7 @@ class IncrementalAverage {
 
     }
 
-    Eigen::Matrix<double, Eigen::Dynamic, 1> GetUpdateCount() {
+    Eigen::VectorXd GetUpdateCount() {
 
       return update_count_;
 
@@ -127,8 +127,8 @@ class IncrementalAverage {
   private:
     mnyrve::common::types::ProcessType process_type_;
     int num_variables_;
-    Eigen::Matrix<T, Eigen::Dynamic, 1> averages_;
-    Eigen::Matrix<double, Eigen::Dynamic, 1> update_count_;
+    Eigen::VectorXd averages_;
+    Eigen::VectorXd update_count_;
 
 
 };

@@ -2,7 +2,9 @@
 #include "constructs/include/discrete_oracle.h"
 
 using mnyrve::constructs::DiscreteOracle;
+using Eigen::VectorXd;
 using Eigen::MatrixXd;
+using Eigen::ArrayXd;
 
 using std::map;
 using std::string;
@@ -49,7 +51,7 @@ TEST_F(DiscreteOracleTest, InitializationCheck) {
 
 TEST_F(DiscreteOracleTest, SetterCheck) {
 
-  MatrixXd reward1, reward2;
+  VectorXd reward1, reward2;
   reward1.resize(4, 1);
   reward2.resize(4, 1);
   reward1 << 1, 2, 3, 4;
@@ -61,8 +63,19 @@ TEST_F(DiscreteOracleTest, SetterCheck) {
   ASSERT_TRUE(do2_.GetRewards().isApprox(reward2));
   ASSERT_TRUE(do3_.GetRewards().isApprox(reward2));
 
+  do1_.SetRandomRewards();
+  do2_.SetRandomRewards();
+  do3_.SetRandomRewards();
+  ASSERT_TRUE((do1_.GetRewards().array()>=ArrayXd::Zero(4)).all());
+  ASSERT_TRUE((do1_.GetRewards().array()<=ArrayXd::Ones(4)).all());
+  ASSERT_TRUE((do2_.GetRewards().array()>=ArrayXd::Zero(4)).all());
+  ASSERT_TRUE((do2_.GetRewards().array()<=ArrayXd::Ones(4)).all());
+  ASSERT_TRUE((do3_.GetRewards().array()>=ArrayXd::Zero(4)).all());
+  ASSERT_TRUE((do3_.GetRewards().array()<=ArrayXd::Ones(4)).all());
+
+
   ASSERT_DEATH(do1_.SetRewards(MatrixXd::Random(4, 2)), "");
-  ASSERT_DEATH(do2_.SetRewards(MatrixXd::Random(5, 1)), "");
+  ASSERT_DEATH(do2_.SetRewards(VectorXd::Random(5, 1)), "");
   ASSERT_DEATH(do3_.SetRewards(MatrixXd::Random(4, 4)), "");
 
 } 
@@ -89,3 +102,6 @@ int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
+
+
+

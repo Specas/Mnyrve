@@ -14,29 +14,23 @@ class DiscreteOracle {
 
   public:
     DiscreteOracle(int num_rewards);
-    DiscreteOracle(Eigen::Matrix<double, Eigen::Dynamic, 1> rewards);
+    DiscreteOracle(Eigen::VectorXd rewards);
     DiscreteOracle(std::map<std::string, double> rewards_map);
 
-    double& operator[](int ind) {
-      return rewards_(ind, 0);
-    }
-
-    double& operator[](std::string key) {
-      MN_REQUIRE((!rewards_map_.empty()), 
-          "Cannot access the oracle by string if a map hasn't been provided.");
-      return rewards_map_[key];
-    }
+    double& operator[](int ind);
+    double& operator[](std::string key);
 
     int GetNumRewards();
-    Eigen::Matrix<double, Eigen::Dynamic, 1> GetRewards();
+    Eigen::VectorXd GetRewards();
     std::map<std::string, double> GetRewardMap();
 
-    void SetRewards(Eigen::Matrix<double, Eigen::Dynamic, 1> rewards);
+    void SetRewards(Eigen::VectorXd rewards);
 
+    void SetRandomRewards();
 
   private:
     int num_rewards_;
-    Eigen::Matrix<double, Eigen::Dynamic, 1> rewards_;
+    Eigen::VectorXd rewards_;
     std::map<std::string, double> rewards_map_;
 
 };

@@ -6,14 +6,24 @@ namespace constructs {
 DiscreteOracle::DiscreteOracle(int num_rewards) {
 
   num_rewards_ = num_rewards;
-  rewards_ = Eigen::Matrix<double, Eigen::Dynamic, 1>::Zero(num_rewards_, 1);
+  rewards_ = Eigen::VectorXd::Zero(num_rewards_, 1);
 }
 
 DiscreteOracle::DiscreteOracle(
-    Eigen::Matrix<double, Eigen::Dynamic, 1> rewards) {
+    Eigen::VectorXd rewards) {
   
   num_rewards_ = rewards.rows();
   rewards_ = rewards;
+}
+
+double& DiscreteOracle::operator[](int ind) {
+  return rewards_(ind, 0);
+}
+
+double& DiscreteOracle::operator[](std::string key) {
+  MN_REQUIRE((!rewards_map_.empty()), 
+        "Cannot access the oracle by string if a map hasn't been provided.");
+  return rewards_map_[key];
 }
 
 DiscreteOracle::DiscreteOracle(std::map<std::string, double> rewards_map) {
@@ -34,7 +44,7 @@ int DiscreteOracle::GetNumRewards() {
   return num_rewards_;
 }
 
-Eigen::Matrix<double, Eigen::Dynamic, 1> DiscreteOracle::GetRewards() {
+Eigen::VectorXd DiscreteOracle::GetRewards() {
   return rewards_;
 }
 
@@ -43,12 +53,18 @@ std::map<std::string, double> DiscreteOracle::GetRewardMap() {
 }
 
 void DiscreteOracle::SetRewards(
-    Eigen::Matrix<double, Eigen::Dynamic, 1> rewards) {
+    Eigen::VectorXd rewards) {
 
   MN_REQUIRE((rewards.size() == num_rewards_), 
       "Reward size should match the initialization size");
   
   rewards_ = rewards;
+}
+
+void DiscreteOracle::SetRandomRewards() {
+
+  rewards_ = (Eigen::VectorXd::Random(num_rewards_) +
+      Eigen::VectorXd::Ones(num_rewards_))/2.0;
 }
       
 
