@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "math/include/incremental_average.h"
+#include "math/misc/include/incremental_average.h"
 
 using mnyrve::math::IncrementalAverage;
 using mnyrve::common::types::ProcessType;

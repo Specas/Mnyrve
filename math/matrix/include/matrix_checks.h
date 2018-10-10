@@ -21,4 +21,5 @@ bool IsStochasticMatrix(Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> m) {
 } // math
 } // mnyrve
 
+
 #endif

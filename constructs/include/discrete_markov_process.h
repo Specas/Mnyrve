@@ -3,7 +3,7 @@
 
 #include "common/include/error_macros.h"
 #include "common/include/types.h"
-#include "math/include/matrix_checks.h"
+#include "math/matrix/include/matrix_checks.h"
 #include "third_party/Eigen/Dense"
 
 #include <iostream>

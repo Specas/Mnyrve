@@ -5,7 +5,7 @@ cc_test(
     deps = [
         "@gtest//:main", 
         "//common:types", 
-        "//math:incremental_average",
+        "//math:misc_math",
         "//third_party/Eigen:eigen",
     ]
 )

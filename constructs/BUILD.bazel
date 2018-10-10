@@ -2,7 +2,6 @@ cc_library(
     name = "discrete_markov_process",
     srcs = ["src/discrete_markov_process.cc"],
     hdrs = ["include/discrete_markov_process.h"],
-    copts = ["-Iconstructs/include"],
     deps = [
         "//common:macros",
         "//common:types",
@@ -16,7 +15,6 @@ cc_library(
     name = "discrete_oracle",
     srcs = ["src/discrete_oracle.cc"],
     hdrs = ["include/discrete_oracle.h"],
-    copts = ["-Iconstructs/include"],
     deps = [
         "//common:macros",
         "//third_party/Eigen:eigen",
