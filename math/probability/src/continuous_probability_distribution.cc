@@ -3,6 +3,9 @@
 namespace mnyrve{
 namespace math{
 
+ContinuousProbabilityDistribution::ContinuousProbabilityDistribution(
+    double mean, double variance) : mean_(mean), variance_(variance) {}
+
 ContinuousProbabilityDistribution::~ContinuousProbabilityDistribution(){}
 
 double ContinuousProbabilityDistribution::GetMean() {
@@ -13,12 +16,12 @@ double ContinuousProbabilityDistribution::GetVariance() {
   return variance_;
 }
 
-void ContinuousProbabilityDistribution::SetMean(double mean) {
-  mean_ = mean;
+double Pdf(double x) {
+  return 0;
 }
 
-void ContinuousProbabilityDistribution::SetVariance(double variance) {
-  variance_ = variance;
+double Cdf(double x) {
+  return 0;
 }
 
 

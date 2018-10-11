@@ -16,28 +16,24 @@ class UniformDistributionTest : public ::testing::Test {
 
     }
 
-    UniformDistribution ud1_{
-      UniformDistribution(-10, -5)};
+    UniformDistribution ud1_{UniformDistribution(-10, -5)};
 
-    UniformDistribution ud2_{
-      UniformDistribution(-3, 2)};
+    UniformDistribution ud2_{UniformDistribution(-3, 2)};
 
-    UniformDistribution ud3_{
-      UniformDistribution(8, 50)};
-
+    UniformDistribution ud3_{UniformDistribution(8, 50)};
 
 };
 
 TEST_F(UniformDistributionTest, InitializationCheck) {
 
-  EXPECT_EQ(ud1_.GetA(), -10);
-  EXPECT_EQ(ud1_.GetB(), -5);
+  EXPECT_DOUBLE_EQ(ud1_.GetA(), -10);
+  EXPECT_DOUBLE_EQ(ud1_.GetB(), -5);
 
-  EXPECT_EQ(ud2_.GetA(), -3);
-  EXPECT_EQ(ud2_.GetB(), 2);
+  EXPECT_DOUBLE_EQ(ud2_.GetA(), -3);
+  EXPECT_DOUBLE_EQ(ud2_.GetB(), 2);
 
-  EXPECT_EQ(ud3_.GetA(), 8);
-  EXPECT_EQ(ud3_.GetB(), 50);
+  EXPECT_DOUBLE_EQ(ud3_.GetA(), 8);
+  EXPECT_DOUBLE_EQ(ud3_.GetB(), 50);
 
   ASSERT_DEATH(
     UniformDistribution ud4_{UniformDistribution(7, 0)}, "");
@@ -46,13 +42,13 @@ TEST_F(UniformDistributionTest, InitializationCheck) {
 
 TEST_F(UniformDistributionTest, ComputationCheck1) {
 
-  EXPECT_EQ(ud1_.GetMean(), -7.5);
+  EXPECT_DOUBLE_EQ(ud1_.GetMean(), -7.5);
   EXPECT_DOUBLE_EQ(ud1_.GetVariance(), 25.0/12);
 
-  EXPECT_EQ(ud2_.GetMean(), -0.5);
+  EXPECT_DOUBLE_EQ(ud2_.GetMean(), -0.5);
   EXPECT_DOUBLE_EQ(ud2_.GetVariance(), 25.0/12);
 
-  EXPECT_EQ(ud3_.GetMean(), 29);
+  EXPECT_DOUBLE_EQ(ud3_.GetMean(), 29);
   EXPECT_DOUBLE_EQ(ud3_.GetVariance(), 147.0);
 
 }
@@ -78,8 +74,6 @@ TEST_F(UniformDistributionTest, ComputationCheck2) {
   EXPECT_DOUBLE_EQ(ud3_.Cdf(60), 1.0);
 
 }
-
-
 
 } // namespace
 

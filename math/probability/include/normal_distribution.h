@@ -1,5 +1,5 @@
-#ifndef UNIFORM_DISTRIBUTION_H
-#define UNIFORM_DISTRIBUTION_H
+#ifndef NORMAL_DISTRIBUTION_H
+#define NORMAL_DISTRIBUTION_H
 
 #include "math/probability/include/continuous_probability_distribution.h"
 
@@ -8,21 +8,20 @@
 namespace mnyrve {
 namespace math {
 
-class UniformDistribution : public ContinuousProbabilityDistribution {
+class NormalDistribution : public ContinuousProbabilityDistribution {
 
   public:
-    UniformDistribution(double a, double b);
-    ~UniformDistribution();
-    double GetA();
-    double GetB();
+    NormalDistribution(double mu, double sigma);
+    ~NormalDistribution();
+    double GetMu();
+    double GetSigma();
 
     double Pdf(double x) const override;
     double Cdf(double x) const override;
 
   private:
-    double a_;
-    double b_;
-
+    double mu_;
+    double sigma_;
 };
 
 

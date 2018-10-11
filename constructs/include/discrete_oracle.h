@@ -25,7 +25,6 @@ class DiscreteOracle {
     std::map<std::string, double> GetRewardMap();
 
     void SetRewards(Eigen::VectorXd rewards);
-
     void SetRandomRewards();
 
   private:

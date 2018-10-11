@@ -3,18 +3,17 @@
 namespace mnyrve {
 namespace math { 
 
-UniformDistribution::~UniformDistribution() {
-}
+UniformDistribution::~UniformDistribution() {}
 
 UniformDistribution::UniformDistribution(double a, double b) :
-  a_(a), b_(a) {
+  ContinuousProbabilityDistribution(
+      0.5*(a + b), (1.0/12)*std::pow((b - a), 2)) {
 
     MN_REQUIRE((a<=b), 
         "a has to be lesser than b.");
     a_ = a;
     b_ = b;
-    SetMean(0.5*(a + b));
-    SetVariance((1.0/12)*pow((b - a), 2));
+
 }
 
 double UniformDistribution::GetA() {
@@ -25,7 +24,7 @@ double UniformDistribution::GetB() {
   return b_;
 }
 
-double UniformDistribution::Pdf(double x) {
+double UniformDistribution::Pdf(double x) const {
 
   double pdf_val = 0;
   if (x >= a_ && x <= b_) {
@@ -35,7 +34,7 @@ double UniformDistribution::Pdf(double x) {
 
 }
 
-double UniformDistribution::Cdf(double x) {
+double UniformDistribution::Cdf(double x) const {
 
   double cdf_val = 0;
   if (x >= a_ && x < b_) {
@@ -47,7 +46,6 @@ double UniformDistribution::Cdf(double x) {
   return cdf_val;
 
 }
-
 
 } // namespace math
 } // namespace mnyrve

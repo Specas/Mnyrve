@@ -46,3 +46,15 @@ cc_library(
     ],
     visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "normal_distribution",
+    hdrs = ["probability/include/normal_distribution.h"],
+    srcs = ["probability/src/normal_distribution.cc"],
+    deps = [
+        "//math:probability_math",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+

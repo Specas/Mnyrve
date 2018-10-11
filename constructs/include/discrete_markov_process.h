@@ -21,7 +21,6 @@ class DiscreteMarkovProcess {
     int num_states_;
     Eigen::MatrixXd state_transition_matrix_;
 
-
 };
 
 

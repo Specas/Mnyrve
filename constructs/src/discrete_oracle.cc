@@ -14,6 +14,7 @@ DiscreteOracle::DiscreteOracle(
   
   num_rewards_ = rewards.rows();
   rewards_ = rewards;
+
 }
 
 double& DiscreteOracle::operator[](int ind) {
@@ -21,9 +22,11 @@ double& DiscreteOracle::operator[](int ind) {
 }
 
 double& DiscreteOracle::operator[](std::string key) {
+
   MN_REQUIRE((!rewards_map_.empty()), 
         "Cannot access the oracle by string if a map hasn't been provided.");
   return rewards_map_[key];
+
 }
 
 DiscreteOracle::DiscreteOracle(std::map<std::string, double> rewards_map) {
@@ -38,6 +41,7 @@ DiscreteOracle::DiscreteOracle(std::map<std::string, double> rewards_map) {
     }
   }
   rewards_map_ = rewards_map;
+
 }
 
 int DiscreteOracle::GetNumRewards() {
@@ -65,6 +69,7 @@ void DiscreteOracle::SetRandomRewards() {
 
   rewards_ = (Eigen::VectorXd::Random(num_rewards_) +
       Eigen::VectorXd::Ones(num_rewards_))/2.0;
+
 }
       
 

@@ -106,30 +106,22 @@ class IncrementalAverage {
     }
 
     Eigen::VectorXd GetAverages() {
-
      return averages_;
-
     }
 
     int GetNumVariables() {
-
       return num_variables_;
-
     }
 
     Eigen::VectorXd GetUpdateCount() {
-
       return update_count_;
-
     }
-
 
   private:
     mnyrve::common::types::ProcessType process_type_;
     int num_variables_;
     Eigen::VectorXd averages_;
     Eigen::VectorXd update_count_;
-
 
 };
 
