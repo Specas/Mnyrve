@@ -9,3 +9,13 @@ cc_test(
         "//third_party/Eigen:eigen",
     ]
 )
+
+cc_test(
+    name = "uniform_distribution_test",
+    srcs = ["uniform_distribution_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//math:uniform_distribution",
+    ]
+)

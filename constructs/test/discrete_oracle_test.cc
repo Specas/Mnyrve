@@ -82,15 +82,15 @@ TEST_F(DiscreteOracleTest, SetterCheck) {
 
 TEST_F(DiscreteOracleTest, OperatorCheck) {
 
-  ASSERT_TRUE(do1_[0] == 0);
-  ASSERT_TRUE(do2_[0] == 1);
-  ASSERT_TRUE(do3_["a"] == 2);
-  ASSERT_TRUE(do3_["b"] == -1.5);
-  ASSERT_TRUE(do3_["c"] == 0);
-  ASSERT_TRUE(do3_["d"] == 100);
+  ASSERT_DOUBLE_EQ(do1_[0], 0);
+  ASSERT_DOUBLE_EQ(do2_[0], 1);
+  ASSERT_DOUBLE_EQ(do3_["a"], 2);
+  ASSERT_DOUBLE_EQ(do3_["b"], -1.5);
+  ASSERT_DOUBLE_EQ(do3_["c"], 0);
+  ASSERT_DOUBLE_EQ(do3_["d"], 100);
   do1_[1] = 7;
-  ASSERT_TRUE(do1_[1] == 7);
-  ASSERT_TRUE(do1_.GetRewards()(1, 0) == 7);
+  ASSERT_DOUBLE_EQ(do1_[1], 7);
+  ASSERT_DOUBLE_EQ(do1_.GetRewards()(1, 0), 7);
 
 }
 
