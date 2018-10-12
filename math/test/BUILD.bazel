@@ -29,3 +29,14 @@ cc_test(
         "//math:normal_distribution",
     ]
 )
+
+cc_test(
+    name = "sampler_test",
+    srcs = ["sampler_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//math:sampler",
+        "//math:distributions",
+    ]
+)

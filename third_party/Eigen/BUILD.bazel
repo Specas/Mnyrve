@@ -5,6 +5,7 @@ licenses([
    "notice",
 ])
 
+package(default_visibility = ["//visibility:public"])
 
 # Getting all the Eigen headers
 EIGEN_HEADERS = glob(
@@ -19,6 +20,5 @@ cc_library(
     defines = [
         "EIGEN_MPL2_ONLY",
     ],
-    visibility = ["//visibility:public"],
 )
  

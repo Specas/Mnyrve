@@ -9,11 +9,14 @@ namespace math {
 class ContinuousProbabilityDistribution {
 
   public:
-    ContinuousProbabilityDistribution(double mean, double variance);
+    ContinuousProbabilityDistribution(double mean,
+                                      double variance,
+                                      double maximum_pdf);
     virtual ~ContinuousProbabilityDistribution() = 0;
 
     double GetMean();
     double GetVariance();
+    double GetMaximumPdf();
 
     virtual double Pdf(double x) const = 0;
     virtual double Cdf(double x) const = 0;
@@ -21,6 +24,7 @@ class ContinuousProbabilityDistribution {
   private:
     double mean_;
     double variance_;
+    double maximum_pdf_;
 
 };
 

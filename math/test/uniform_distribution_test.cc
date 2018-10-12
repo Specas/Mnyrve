@@ -44,12 +44,15 @@ TEST_F(UniformDistributionTest, ComputationCheck1) {
 
   EXPECT_DOUBLE_EQ(ud1_.GetMean(), -7.5);
   EXPECT_DOUBLE_EQ(ud1_.GetVariance(), 25.0/12);
+  EXPECT_DOUBLE_EQ(ud1_.GetMaximumPdf(), 1.0/5);
 
   EXPECT_DOUBLE_EQ(ud2_.GetMean(), -0.5);
   EXPECT_DOUBLE_EQ(ud2_.GetVariance(), 25.0/12);
+  EXPECT_DOUBLE_EQ(ud2_.GetMaximumPdf(), 1.0/5);
 
   EXPECT_DOUBLE_EQ(ud3_.GetMean(), 29);
   EXPECT_DOUBLE_EQ(ud3_.GetVariance(), 147.0);
+  EXPECT_DOUBLE_EQ(ud3_.GetMaximumPdf(), 1.0/42);
 
 }
 

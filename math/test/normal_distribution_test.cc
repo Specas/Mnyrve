@@ -17,7 +17,6 @@ class NormalDistributionTest : public ::testing::Test {
     }
 
     NormalDistribution nd1_{NormalDistribution(4, 10)};
-
     NormalDistribution nd2_{NormalDistribution(0, 1)};
 
 };
@@ -30,15 +29,19 @@ TEST_F(NormalDistributionTest, InitializationCheck) {
   EXPECT_DOUBLE_EQ(nd2_.GetMu(), 0);
   EXPECT_DOUBLE_EQ(nd2_.GetSigma(), 1);
 
+  ASSERT_DEATH(NormalDistribution nd2_{NormalDistribution(1, 0)}, "");
+
 }
 
 TEST_F(NormalDistributionTest, ComputationCheck1) {
 
   EXPECT_EQ(nd1_.GetMean(), 4);
   EXPECT_DOUBLE_EQ(nd1_.GetVariance(), 100);
+  EXPECT_DOUBLE_EQ(nd1_.GetMaximumPdf(), 0.03989422804014326); 
 
   EXPECT_EQ(nd2_.GetMean(), 0);
   EXPECT_DOUBLE_EQ(nd2_.GetVariance(), 1);
+  EXPECT_DOUBLE_EQ(nd2_.GetMaximumPdf(), 0.39894228040143267); 
 
 }
 

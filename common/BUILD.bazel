@@ -1,9 +1,10 @@
+package(default_visibility = ["//visibility:public"])
+
 cc_library(
     name = "types",
     hdrs = [
         "include/types.h",
     ],
-    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -11,6 +12,5 @@ cc_library(
     hdrs = [
         "include/error_macros.h",
     ],
-    visibility = ["//visibility:public"],
 )
   

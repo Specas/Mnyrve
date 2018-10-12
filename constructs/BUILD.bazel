@@ -1,3 +1,5 @@
+package(default_visibility = ["//visibility:public"])
+
 cc_library(
     name = "discrete_markov_process",
     srcs = ["src/discrete_markov_process.cc"],
@@ -8,7 +10,6 @@ cc_library(
         "//math:matrix_math",
         "//third_party/Eigen:eigen",
     ],
-    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -19,5 +20,4 @@ cc_library(
         "//common:macros",
         "//third_party/Eigen:eigen",
     ],
-    visibility = ["//visibility:public"],
 )

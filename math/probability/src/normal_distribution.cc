@@ -6,8 +6,11 @@ namespace math {
 NormalDistribution::~NormalDistribution() {}
 
 NormalDistribution::NormalDistribution(double mu, double sigma) :
-  ContinuousProbabilityDistribution(mu, std::pow(sigma, 2)) {
+  ContinuousProbabilityDistribution(mu,
+                                    std::pow(sigma, 2),
+                                    1.0/std::sqrt(2*M_PI*std::pow(sigma_, 2))) {
 
+  MN_REQUIRE((sigma!=0), "Sigma cannot be zero.");
   mu_ = mu;
   sigma_ = sigma;
 

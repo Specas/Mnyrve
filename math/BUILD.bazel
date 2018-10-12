@@ -1,3 +1,17 @@
+package(default_visibility = ["//visibility:public"])
+
+# Combined dependencies that may be useful to include
+
+cc_library(
+    name = "distributions",
+    deps = [
+        "//math:uniform_distribution",
+        "//math:normal_distribution",
+    ],
+)
+
+
+
 cc_library(
     name = "matrix_math",
     hdrs = [
@@ -6,7 +20,6 @@ cc_library(
     deps = [
         "//common:types",
     ],
-    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -19,11 +32,10 @@ cc_library(
         "//common:types",
         "//third_party/Eigen:eigen",
     ],
-    visibility = ["//visibility:public"],
 )
 
 cc_library(
-    name = "probability_math",
+    name = "continuous_probability_distribution",
     hdrs = [
         "probability/include/continuous_probability_distribution.h",
     ],
@@ -34,7 +46,6 @@ cc_library(
         "//common:macros",
         "//third_party/Eigen:eigen",
     ],
-    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -42,9 +53,8 @@ cc_library(
     hdrs = ["probability/include/uniform_distribution.h"],
     srcs = ["probability/src/uniform_distribution.cc"],
     deps = [
-        "//math:probability_math",
+        "//math:continuous_probability_distribution",
     ],
-    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -52,9 +62,20 @@ cc_library(
     hdrs = ["probability/include/normal_distribution.h"],
     srcs = ["probability/src/normal_distribution.cc"],
     deps = [
-        "//math:probability_math",
+        "//math:continuous_probability_distribution",
     ],
-    visibility = ["//visibility:public"],
+)
+
+
+
+cc_library(
+    name = "sampler",
+    hdrs = ["statistics/include/sampler.h"],
+    srcs = ["statistics/src/sampler.cc"],
+    deps = [
+        "//math:continuous_probability_distribution",
+        "//third_party/Eigen:eigen",
+    ],
 )
 
 

@@ -25,7 +25,6 @@ class UniformDistribution : public ContinuousProbabilityDistribution {
 
 };
 
-
 } // namespace math
 } // namespace mnyrve
 

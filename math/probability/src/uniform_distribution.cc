@@ -7,7 +7,7 @@ UniformDistribution::~UniformDistribution() {}
 
 UniformDistribution::UniformDistribution(double a, double b) :
   ContinuousProbabilityDistribution(
-      0.5*(a + b), (1.0/12)*std::pow((b - a), 2)) {
+      0.5*(a + b), (1.0/12)*std::pow((b - a), 2), 1.0/(b - a)) {
 
     MN_REQUIRE((a<=b), 
         "a has to be lesser than b.");
