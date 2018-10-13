@@ -55,15 +55,6 @@ Eigen::MatrixXd Sampler::SampleMatrix(int num_rows, int num_cols) {
 
 }
 
-
-
-
-  
-
-
-
-
-
 } // namespace math
 } // namespace mnyrve
 

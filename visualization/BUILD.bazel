@@ -1,0 +1,20 @@
+# -*- python -*-
+
+package(default_visibility = ["//visibility:public"])
+
+load("//tools/starlark:repository.bzl", "python_repository")
+
+cc_library(
+    name = "plot2d",
+    hdrs = [
+        "include/plot2d.h",
+    ],
+    srcs = ["src/plot2d.cc"],
+    deps = ["@python3//:python3_headers"],
+
+)
+
+
+
+
+  

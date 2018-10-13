@@ -1,3 +1,5 @@
+# -*- python -*-
+
 # Declaring the license types for Eigen
 
 licenses([

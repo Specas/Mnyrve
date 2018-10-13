@@ -1,3 +1,5 @@
+# -*- python -*-
+
 cc_test(
     name = "discrete_oracle_test",
     srcs = ["discrete_oracle_test.cc"],

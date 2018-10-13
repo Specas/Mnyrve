@@ -1,3 +1,5 @@
+# -*- python -*-
+
 cc_test(
     name = "incremental_average_test",
     srcs = ["incremental_average_test.cc"],
