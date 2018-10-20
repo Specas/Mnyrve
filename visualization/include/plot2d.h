@@ -10,6 +10,7 @@ class Plot2d {
 
   public:
     Plot2d();
+    void PlotSample();
 
 };
 

@@ -1,1 +1,10 @@
-build --cxxopt='-std=c++14' 
+# -*- python -*-
+
+build --cxxopt='-std=c++14'
+
+#build --cxxopt='-std=c++14' --cxxopt='-I/usr/include/python3.5m' --linkopt='-L/usr/lib/python3.5/config-3.5m-x86_64-linux-gnu -L/usr/lib -lpython3.5m -lpthread -ldl -lutil -lm -Xlinker -export-dynamic -Wl' --linkopt='-O1 -Wl' --linkopt='-Bsymbolic-functions' 
+
+
+
+#--linkopt='-L/usr/lib' --linkopt='-lpython3.5m' --linkopt='-lbthread' --linkopt='-ldl' --linkopt='-lutil' --linkopt='-lm' --linkopt='-Xlinker' --linkopt='-export-dynamic' --linkopt='-Wl' --linkopt='-O1' --linkopt='-Wl'
+# --linkopt='-Bsymbolic-functions'

@@ -11,7 +11,7 @@ new_http_archive(
 )
 
 python_repository(
-    name = "python3",
+    name = "python3_rep",
     version = "3",
 )
 

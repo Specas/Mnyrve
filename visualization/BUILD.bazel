@@ -2,7 +2,7 @@
 
 package(default_visibility = ["//visibility:public"])
 
-load("//tools/starlark:repository.bzl", "python_repository")
+#load("//tools/starlark:repository.bzl", "python_repository")
 
 cc_library(
     name = "plot2d",
@@ -10,8 +10,14 @@ cc_library(
         "include/plot2d.h",
     ],
     srcs = ["src/plot2d.cc"],
-    deps = ["@python3//:python3_headers"],
+    deps = ["@python3_rep//:python3"],
 
+)
+
+cc_binary(
+    name = "test",
+    srcs = ["src/test.cc"],
+    deps = ["//visualization:plot2d"],
 )
 
 
