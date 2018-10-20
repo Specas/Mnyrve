@@ -12,35 +12,27 @@ void Plot2d::PlotSample() {
   PyObject *pArgs, *pValue;
 
   Py_Initialize();
-  pName = PyUnicode_DecodeFSDefault("test2");
-  //pName = PyString_FromString("plot2d");
+  pName = PyUnicode_DecodeFSDefault("plot2d");
+
+  
   pModule = PyImport_Import(pName);
+
+  pFunc = PyObject_GetAttrString(pModule, "plot_sample");
+
+  if (PyCallable_Check(pFunc)) {
+    std::cout << "Calling" << std::endl;
+
+    PyObject_CallObject(pFunc, NULL);
+
+  } else {
+    std::cout << "Not" << std::endl;
+
+    PyErr_Print();
+
+  }
+
+  Py_DECREF(pModule);
   Py_DECREF(pName);
-
-  pFunc = PyObject_GetAttrString(pModule, "test_func");
-
-  //pDict = PyModule_GetDict(pModule);
-
-  //PyObject* repr = PyObject_Repr(pDict);
-  //const char* s = PyUnicode_AsUTF8(repr);
-  //std::cout << s << std::endl;
-
-  //pFunc = PyDict_GetItemString(pDict, "test_func");
-
-  //if (PyCallable_Check(pFunc)) {
-  //  std::cout << "Calling" << std::endl;
-
-  //  PyObject_CallObject(pFunc, NULL);
-
-  //} else {
-  //  std::cout << "Not" << std::endl;
-
-  //  PyErr_Print();
-
-  //}
-
-  //Py_DECREF(pModule);
-  //Py_DECREF(pName);
   //Py_DECREF(repr);
 
   //Py_Finalize();
