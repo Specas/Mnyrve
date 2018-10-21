@@ -9,8 +9,7 @@ DiscreteOracle::DiscreteOracle(int num_rewards) {
   rewards_ = Eigen::VectorXd::Zero(num_rewards_, 1);
 }
 
-DiscreteOracle::DiscreteOracle(
-    Eigen::VectorXd rewards) {
+DiscreteOracle::DiscreteOracle(Eigen::VectorXd rewards) {
   
   num_rewards_ = rewards.rows();
   rewards_ = rewards;

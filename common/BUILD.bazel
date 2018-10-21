@@ -14,5 +14,6 @@ cc_library(
     hdrs = [
         "include/error_macros.h",
     ],
+    deps = ["//third_party/Eigen:eigen"],
 )
   

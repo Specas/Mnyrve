@@ -23,7 +23,7 @@ double Sampler::SampleValue() {
         distribution_->GetMaximumPdf());
     sample = initial_sample(generator);
     if (distribution_->Pdf(sample) > rejection_sample(generator)) {
-      break;
+      done = true;
     }
   }
 

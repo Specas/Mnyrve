@@ -23,3 +23,14 @@ cc_library(
         "//third_party/Eigen:eigen",
     ],
 )
+
+cc_library(
+    name = "epsilon_greedy",
+    hdrs = ["include/epsilon_greedy.h"],
+    srcs = ["src/epsilon_greedy.cc"],
+    deps = [
+        "//common:macros",
+        "//math:uniform_distribution", 
+        "//math:sampler",
+    ],
+)
