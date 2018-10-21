@@ -1,6 +1,5 @@
 #ifndef CUSTOM_TYPES_H
 #define CUSTOM_TYPES_H
-//#pragma once
 
 namespace mnyrve {
 namespace common {
@@ -33,6 +32,25 @@ enum class DistributionType {
   kNormal = 0,
 
 };
+
+template <typename T>
+struct MaxMatrixType {
+
+  T maximum;
+  std::pair<int, int> maximum_ind;
+
+};
+
+
+template <typename T>
+struct MinMatrixType {
+
+  T minimum;
+  std::pair<int, int> minimum_ind;
+
+};
+
+
 
 } // namespace types
 } // namespace common

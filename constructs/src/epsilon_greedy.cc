@@ -7,11 +7,11 @@ namespace mnyrve {
 namespace constructs {
 
 EpsilonGreedy::EpsilonGreedy(double epsilon):
- sampler_(std::make_unique<UniformDistribution>(0, 1), 0, 1) {
+  epsilon_(epsilon),
+  sampler_(std::make_unique<UniformDistribution>(0, 1), 0, 1) {
   
-  MN_REQUIRE(((epsilon >= 0) && (epsilon <= 1)),
-      "Epsilon should be in (0, 1)"); 
-  epsilon_ = epsilon;
+    MN_REQUIRE(((epsilon >= 0) && (epsilon <= 1)),
+        "Epsilon should be in (0, 1)"); 
 }
 
 double EpsilonGreedy::GetEpsilon() {
