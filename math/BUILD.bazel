@@ -12,6 +12,13 @@ cc_library(
     ],
 )
 
+cc_library(
+    name = "misc_math",
+    deps = [
+        "//math:incremental_average",
+    ],
+)
+
 
 cc_library(
     name = "matrix_math",
@@ -24,7 +31,7 @@ cc_library(
 )
 
 cc_library(
-    name = "misc_math",
+    name = "incremental_average",
     hdrs = [
         "misc/include/incremental_average.h"
     ],

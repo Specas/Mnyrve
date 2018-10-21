@@ -6,7 +6,8 @@ using mnyrve::math::Sampler;
 namespace mnyrve {
 namespace constructs {
 
-EpsilonGreedy::EpsilonGreedy(double epsilon) {
+EpsilonGreedy::EpsilonGreedy(double epsilon):
+ sampler_(std::make_unique<UniformDistribution>(0, 1), 0, 1) {
   
   MN_REQUIRE(((epsilon >= 0) && (epsilon <= 1)),
       "Epsilon should be in (0, 1)"); 
@@ -23,9 +24,7 @@ void EpsilonGreedy::SetEpsilon(double epsilon) {
 
 bool EpsilonGreedy::ActGreedy() {
 
-  Sampler sampler(std::make_unique<UniformDistribution>(0, 1), 0, 1);
-
-  if (sampler.SampleValue() > epsilon_) {
+  if (sampler_.SampleValue() > epsilon_) {
     return true;
   } else {
     return false;

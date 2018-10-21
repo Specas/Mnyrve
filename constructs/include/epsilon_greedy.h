@@ -19,6 +19,7 @@ class EpsilonGreedy {
 
   private:
     double epsilon_;
+    mnyrve::math::Sampler sampler_;
 
 };
 
