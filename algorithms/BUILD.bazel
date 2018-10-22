@@ -9,6 +9,8 @@ cc_library(
     deps = [
         "//common:macros",
         "//common:types",
+        "//constructs:epsilon_greedy",
+        "//math:matrix_operations",
         "//math:incremental_average",
         "//third_party/Eigen:eigen",
     ],

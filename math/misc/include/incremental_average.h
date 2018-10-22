@@ -44,7 +44,7 @@ class IncrementalAverage {
       MN_REQUIRE((observation.rows() == num_variables_),
           "Observation size should equal the initialized variable size.");
 
-      if(process_type_ == mnyrve::common::types::ProcessType::kStationary) {
+      if (process_type_ == mnyrve::common::types::ProcessType::kStationary) {
 
         update_count_ = update_count_ + 
           Eigen::VectorXd::Ones(num_variables_, 1);
@@ -57,12 +57,13 @@ class IncrementalAverage {
         Eigen::VectorXd residue = 
           (observation.array() - averages_.array())*update_count_.array();
         averages_ = averages_ + residue;
+
       }
     }
 
     void Update(int index, T single_observation) {
 
-      if(process_type_ == mnyrve::common::types::ProcessType::kStationary) {
+      if (process_type_ == mnyrve::common::types::ProcessType::kStationary) {
 
         update_count_(index, 0) = update_count_(index, 0) + 1;
         averages_(index, 0) = averages_(index, 0) +
@@ -77,7 +78,7 @@ class IncrementalAverage {
 
     void Update(std::map<T, int> observation_map) {
 
-        for(auto const& elem : observation_map) {
+        for (auto const& elem : observation_map) {
           Update(elem.first, elem.second);
         }
 
@@ -90,8 +91,7 @@ class IncrementalAverage {
           "Trying to set a constant step size to track a stationary process.");
 
       update_count_ =
-        Eigen::VectorXd::Constant(
-            num_variables_, 1, step_size);
+        Eigen::VectorXd::Constant(num_variables_, 1, step_size);
 
     }
 
@@ -102,6 +102,14 @@ class IncrementalAverage {
           "The averages must be of the same initialized variable size.");
 
       averages_ = averages;
+
+    }
+    
+    void SetAverages(int index, T average) {
+
+        MN_REQUIRE(((index >= 0) && (index < num_variables_)), "");
+
+        averages_(index) = average;
 
     }
 

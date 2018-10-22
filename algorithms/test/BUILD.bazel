@@ -1,0 +1,11 @@
+# -*- python -*-
+
+cc_test(
+    name = "armed_bandits_test",
+    srcs = ["armed_bandits_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//algorithms:armed_bandits",
+    ]
+)

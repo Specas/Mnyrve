@@ -1,0 +1,12 @@
+# -*- python -*-
+
+cc_test(
+    name = "sampler_test",
+    srcs = ["sampler_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//math:sampler",
+        "//math:distributions",
+    ]
+)

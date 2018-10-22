@@ -1,0 +1,13 @@
+# -*- python -*-
+
+cc_test(
+    name = "incremental_average_test",
+    srcs = ["incremental_average_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//math:incremental_average",
+    ]
+)
+
+
