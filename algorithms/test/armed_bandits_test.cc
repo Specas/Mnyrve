@@ -126,12 +126,14 @@ TEST_F(ArmedBanditsTest, ActionCheck) {
   ab2_.RegisterReward(0, 9.5);
   ab2_.RegisterReward(40, 10.1);
   ab2_.RegisterReward(91, 1);
+  ab1_.RegisterReward(2, 4);
   VectorXd res2 = VectorXd::Zero(100);
   res2(0) = 9.5;
   res2(40) = 10.1;
   res2(91) = 1;
+  ASSERT_EQ(ab1_.TakeGreedyAction(), 2);
   ASSERT_EQ(ab2_.TakeAction(), 40);
-
+  ASSERT_EQ(ab2_.TakeGreedyAction(), 40);
 
 }
 

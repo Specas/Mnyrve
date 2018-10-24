@@ -89,6 +89,13 @@ int ArmedBandits::TakeAction() {
 
 }
 
+int ArmedBandits::TakeGreedyAction() {
+  
+  int max_ind;
+  average_manager_.GetAverages().maxCoeff(&max_ind);
+  return max_ind;
+}
+
 
 void ArmedBandits::RegisterReward(int index, double reward) {
 

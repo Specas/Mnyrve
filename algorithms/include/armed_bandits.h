@@ -26,6 +26,7 @@ class ArmedBandits {
     void SetEpsilon(double epsilon);
 
     int TakeAction();
+    int TakeGreedyAction();
     void RegisterReward(int ind, double reward);
 
 
