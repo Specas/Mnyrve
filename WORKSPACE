@@ -1,6 +1,6 @@
 workspace(name = "Mnyrve")
 
-load("//tools/starlark:repository.bzl", "python_repository")
+load("//tools/starlark:python_repository.bzl", "python_repository")
 
 # gtest test archive
 new_http_archive(
@@ -24,5 +24,6 @@ python_repository(
     name = "python3_rep",
     version = "3",
 )
+
 
 
