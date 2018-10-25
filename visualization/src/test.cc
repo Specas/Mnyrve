@@ -1,4 +1,5 @@
 #include "visualization/include/plot2d.h"
+
 #include <iostream>
 
 namespace mnyrve {
@@ -13,7 +14,7 @@ int main() {
 
   mnyrve::visualization::Plot2d plotter;
   std::cout << "Starts" << std::endl;
-  plotter.PlotSample();
+  plotter.PlotSimple();
 
   return 0;
 
