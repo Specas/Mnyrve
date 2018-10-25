@@ -20,5 +20,6 @@ before_install:
   - sudo unlink /usr/bin/g++ && sudo ln -s /usr/bin/g++-5 /usr/bin/g++
 
 script:
+  - ./pre_build.sh
   - bazel build --verbose_failures ...
   - bazel test --test_verbose_timeout_warnings ...
