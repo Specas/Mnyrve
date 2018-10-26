@@ -29,21 +29,6 @@ def plot_complete(x, y, plot_details):
 
 if __name__ == '__main__':
 
-    plot_details = {}
-    x_limits = {}
-    y_limits = {}
-    x_limits["lower"] = 0
-    x_limits["upper"] = 5
-    y_limits["lower"] = 0
-    y_limits["upper"] = 10
-    plot_details["figure_title"] = 'figure_title'
-    plot_details["plot_title"] = 'plot_title'
-    plot_details["x_label"] = 'xlabel'
-    plot_details["y_label"] = 'ylabel'
-    plot_details["fmt"] = 'g'
-    plot_details["x_limits"] = x_limits
-    plot_details["y_limits"] = y_limits
-    plot_complete([1, 2, 3], [4, 5, 7], plot_details)
     pass
     
 
