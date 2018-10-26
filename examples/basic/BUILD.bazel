@@ -5,11 +5,14 @@
 cc_binary(
     name = "k_armed_bandits",
     srcs = ["k_armed_bandits.cc"],
-    deps = ["//algorithms:armed_bandits",
-            "//constructs:discrete_oracle",
-            "//math:distributions",
-            "//math:sampler",
-            "//third_party/Eigen:eigen",
-            "@gflags_repo//:gflags",
+    deps = [
+        "//algorithms:armed_bandits",
+        "//common:types",
+        "//constructs:discrete_oracle",
+        "//math:distributions",
+        "//math:sampler",
+        "//third_party/Eigen:eigen",
+        "//visualization:plot2d",
+        "@gflags_repo//:gflags",
     ],
 )
