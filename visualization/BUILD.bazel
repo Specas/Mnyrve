@@ -11,6 +11,7 @@ cc_library(
     data = ["//tools/data:python_paths.txt"],
     deps = [
         "//common:macros",
+        "//common:types",
         "//third_party/Eigen:eigen",
         "//utility:path_util",
         "@python3_rep//:python3",
