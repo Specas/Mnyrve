@@ -7,10 +7,6 @@ def create_figure(frame_title = None):
     ax = fig.gca()
     return fig, ax
 
-def plot_sample():
-    plt.plot([1, 2, 3], [1, 2, 3])
-    plt.show()
-
 def plot_simple(x, y):
 
     fig, ax = create_figure()

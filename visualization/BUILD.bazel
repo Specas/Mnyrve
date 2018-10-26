@@ -10,8 +10,10 @@ cc_library(
     srcs = ["src/plot2d.cc"],
     data = ["//tools/data:python_paths.txt"],
     deps = [
-            "//utility:path_util",
-            "@python3_rep//:python3",
+        "//common:macros",
+        "//third_party/Eigen:eigen",
+        "//utility:path_util",
+        "@python3_rep//:python3",
     ],
 
 )
@@ -22,6 +24,7 @@ cc_binary(
     data = [
     ],
     deps = [
+        "//third_party/Eigen:eigen",
         "//visualization:plot2d",
     ],
 )

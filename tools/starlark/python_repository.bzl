@@ -16,9 +16,11 @@ def _impl(repository_ctx):
     python_linkers = python_linkers.stdout.strip().split(" ")
     python_linkers = [python_linker for python_linker in python_linkers if python_linker]
 
-    print("python3-config:", python_config)
-    print("python3-headers:", python_headers) 
-    print("python3-linkers:", python_linkers)
+    # Uncomment to debug
+
+    #print("python3-config:", python_config)
+    #print("python3-headers:", python_headers) 
+    #print("python3-linkers:", python_linkers)
 
     root = repository_ctx.path("")
     root_len = len(str(root)) + 1

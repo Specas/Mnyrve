@@ -1,6 +1,8 @@
 #ifndef PLOT2D_H
 #define PLOT2D_H
 
+#include "common/include/error_macros.h"
+#include "third_party/Eigen/Dense"
 #include "utility/include/path_util.h"
 
 #include "Python.h"
@@ -16,7 +18,7 @@ class Plot2d {
 
   public:
     Plot2d();
-    void PlotSimple();
+    void PlotSimple(Eigen::VectorXd x, Eigen::VectorXd y);
 
 };
 
