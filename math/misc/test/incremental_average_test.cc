@@ -1,8 +1,7 @@
 #include "gtest/gtest.h"
-#include "math/include/incremental_average.h"
+#include "math/misc/include/incremental_average.h"
 
 using mnyrve::math::IncrementalAverage;
-using mnyrve::common::types::ProcessType;
 using mnyrve::common::types::ProcessType;
 using Eigen::MatrixXd;
 
@@ -14,7 +13,6 @@ namespace {
 class IncrementalAverageTest : public ::testing::Test {
 
   protected:
-
     IncrementalAverageTest() {
 
     }
@@ -69,6 +67,14 @@ TEST_F(IncrementalAverageTest, SetterCheck) {
   ia1_.SetAverages(observation);
   ia2_.SetAverages(observation);
   ia3_.SetAverages(observation);
+  ASSERT_TRUE(ia1_.GetAverages().isApprox(observation));
+  ASSERT_TRUE(ia2_.GetAverages().isApprox(observation));
+  ASSERT_TRUE(ia3_.GetAverages().isApprox(observation));
+
+  observation(1) = 2;
+  ia1_.SetAverages(1, 2);
+  ia2_.SetAverages(1, 2);
+  ia3_.SetAverages(1, 2);
   ASSERT_TRUE(ia1_.GetAverages().isApprox(observation));
   ASSERT_TRUE(ia2_.GetAverages().isApprox(observation));
   ASSERT_TRUE(ia3_.GetAverages().isApprox(observation));

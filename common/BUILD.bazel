@@ -1,10 +1,12 @@
+# -*- python -*-
+
+package(default_visibility = ["//visibility:public"])
+
 cc_library(
     name = "types",
     hdrs = [
         "include/types.h",
     ],
-    copts = ["-Icommon/include"],
-    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -12,7 +14,6 @@ cc_library(
     hdrs = [
         "include/error_macros.h",
     ],
-    copts = ["-Icommon/include"],
-    visibility = ["//visibility:public"],
+    deps = ["//third_party/Eigen:eigen"],
 )
   

@@ -1,1 +1,4 @@
+# -*- python -*-
+
 build --cxxopt='-std=c++14'
+

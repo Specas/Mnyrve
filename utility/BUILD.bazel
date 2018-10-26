@@ -1,0 +1,20 @@
+# -*- python -*-
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "path_util",
+    hdrs = [
+        "include/path_util.h",
+    ],
+    srcs = ["src/path_util.cc"],
+    data = [
+        "//tools/data:python_paths.txt", 
+        "//tools/data:mnyrve_path.txt",
+    ],
+    deps = [
+        "@python3_rep//:python3",
+    ],
+
+)
+

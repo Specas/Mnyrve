@@ -1,7 +1,6 @@
 #ifndef MATRIX_CHECKS_H
 #define MATRIX_CHECKS_H
 
-#include "common/include/types.h"
 #include "third_party/Eigen/Dense"
 
 namespace mnyrve {
@@ -15,10 +14,11 @@ bool IsSquare(Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> m) {
 template<typename T>
 bool IsStochasticMatrix(Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> m) {
   auto col_sum = m.rowwise().sum();
-  return col_sum.isOnes();
+  return col_sum.isOnes() && (m.minCoeff() >= 0);
 }
 
 } // math
 } // mnyrve
+
 
 #endif

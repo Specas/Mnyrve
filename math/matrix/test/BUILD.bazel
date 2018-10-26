@@ -1,0 +1,23 @@
+# -*- python -*-
+
+cc_test(
+    name = "matrix_checks_test",
+    srcs = ["matrix_checks_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//math:matrix_checks",
+    ]
+)
+
+cc_test(
+    name = "matrix_operations_test",
+    srcs = ["matrix_operations_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//math:matrix_operations",
+    ]
+)
+
+

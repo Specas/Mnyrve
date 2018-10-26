@@ -1,0 +1,26 @@
+# -*- python -*-
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "plot2d",
+    hdrs = [
+        "include/plot2d.h",
+    ],
+    srcs = ["src/plot2d.cc"],
+    data = ["//tools/data:python_paths.txt"],
+    deps = [
+        "//common:macros",
+        "//common:types",
+        "//third_party/Eigen:eigen",
+        "//utility:path_util",
+        "@python3_rep//:python3",
+    ],
+
+)
+
+
+
+
+
+  

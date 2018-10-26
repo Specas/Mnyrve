@@ -1,13 +1,36 @@
+# -*- python -*-
+
+package(default_visibility = ["//visibility:public"])
+
 cc_library(
     name = "discrete_markov_process",
-    srcs = ["src/discrete_markov_process.cc"],
     hdrs = ["include/discrete_markov_process.h"],
-    copts = ["-Iconstructs/include"],
+    srcs = ["src/discrete_markov_process.cc"],
     deps = [
         "//common:macros",
         "//common:types",
         "//math:matrix_math",
         "//third_party/Eigen:eigen",
     ],
-    visibility = ["//visibility:public"],
+)
+
+cc_library(
+    name = "discrete_oracle",
+    hdrs = ["include/discrete_oracle.h"],
+    srcs = ["src/discrete_oracle.cc"],
+    deps = [
+        "//common:macros",
+        "//third_party/Eigen:eigen",
+    ],
+)
+
+cc_library(
+    name = "epsilon_greedy",
+    hdrs = ["include/epsilon_greedy.h"],
+    srcs = ["src/epsilon_greedy.cc"],
+    deps = [
+        "//common:macros",
+        "//math:uniform_distribution", 
+        "//math:sampler",
+    ],
 )

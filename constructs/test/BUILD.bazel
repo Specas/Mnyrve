@@ -1,0 +1,25 @@
+# -*- python -*-
+
+cc_test(
+    name = "discrete_oracle_test",
+    srcs = ["discrete_oracle_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//common:types", 
+        "//constructs:discrete_oracle",
+        "//third_party/Eigen:eigen",
+    ]
+)
+
+cc_test(
+    name = "epsilon_greedy_test",
+    srcs = ["epsilon_greedy_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//common:types", 
+        "//constructs:epsilon_greedy",
+        "//third_party/Eigen:eigen",
+    ]
+)

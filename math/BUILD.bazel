@@ -1,25 +1,107 @@
+# -*- python -*-
+
+package(default_visibility = ["//visibility:public"])
+
+# Combined dependencies that may be useful to include
+
+cc_library(
+    name = "distributions",
+    deps = [
+        "//math:uniform_distribution",
+        "//math:normal_distribution",
+    ],
+)
+
+cc_library(
+    name = "misc_math",
+    deps = [
+        "//math:incremental_average",
+    ],
+)
+
 cc_library(
     name = "matrix_math",
-    hdrs = [
-        "include/matrix_checks.h"
+    deps = [
+        "//math:matrix_checks",
     ],
-    copts = ["-Imath/include"],
+)
+
+
+cc_library(
+    name = "matrix_checks",
+    hdrs = [
+        "matrix/include/matrix_checks.h", 
+    ],
+    deps = [
+        "//third_party/Eigen:eigen",
+    ],
+)
+
+cc_library(
+    name = "matrix_operations",
+    hdrs = [
+        "matrix/include/matrix_operations.h", 
+    ],
     deps = [
         "//common:types",
+        "//third_party/Eigen:eigen",
     ],
-    visibility = ["//visibility:public"],
 )
+
 
 cc_library(
     name = "incremental_average",
     hdrs = [
-        "include/incremental_average.h"
+        "misc/include/incremental_average.h"
     ],
-    copts = ["-Imath/include"],
     deps = [
         "//common:macros",
         "//common:types",
         "//third_party/Eigen:eigen",
     ],
-    visibility = ["//visibility:public"],
 )
+
+cc_library(
+    name = "continuous_probability_distribution",
+    hdrs = [
+        "probability/include/continuous_probability_distribution.h",
+    ],
+    srcs = [
+        "probability/src/continuous_probability_distribution.cc",
+    ],
+    deps = [
+        "//common:macros",
+    ],
+)
+
+cc_library(
+    name = "uniform_distribution",
+    hdrs = ["probability/include/uniform_distribution.h"],
+    srcs = ["probability/src/uniform_distribution.cc"],
+    deps = [
+        "//math:continuous_probability_distribution",
+    ],
+)
+
+cc_library(
+    name = "normal_distribution",
+    hdrs = ["probability/include/normal_distribution.h"],
+    srcs = ["probability/src/normal_distribution.cc"],
+    deps = [
+        "//math:continuous_probability_distribution",
+    ],
+)
+
+
+
+cc_library(
+    name = "sampler",
+    hdrs = ["statistics/include/sampler.h"],
+    srcs = ["statistics/src/sampler.cc"],
+    deps = [
+        "//math:continuous_probability_distribution",
+        "//third_party/Eigen:eigen",
+    ],
+)
+
+

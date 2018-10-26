@@ -1,0 +1,17 @@
+# -*- python -*-
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "armed_bandits",
+    hdrs = ["include/armed_bandits.h"],
+    srcs = ["src/armed_bandits.cc"],
+    deps = [
+        "//common:macros",
+        "//common:types",
+        "//constructs:epsilon_greedy",
+        "//math:matrix_operations",
+        "//math:incremental_average",
+        "//third_party/Eigen:eigen",
+    ],
+)

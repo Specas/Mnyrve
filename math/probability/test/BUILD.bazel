@@ -1,0 +1,24 @@
+# -*- python -*-
+
+
+cc_test(
+    name = "uniform_distribution_test",
+    srcs = ["uniform_distribution_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//math:uniform_distribution",
+    ]
+)
+
+cc_test(
+    name = "normal_distribution_test",
+    srcs = ["normal_distribution_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//math:normal_distribution",
+    ]
+)
+
+
