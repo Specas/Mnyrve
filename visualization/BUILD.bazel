@@ -19,18 +19,6 @@ cc_library(
 
 )
 
-cc_binary(
-    name = "test",
-    srcs = ["src/test.cc"],
-    data = [
-    ],
-    deps = [
-        "//third_party/Eigen:eigen",
-        "//visualization:plot2d",
-    ],
-)
-
-
 
 
 
