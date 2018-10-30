@@ -36,6 +36,7 @@ TEST_F(EpsilonGreedyTest, SetterCheck) {
 TEST_F(EpsilonGreedyTest, OperatorCheck) {
 
   bool res = eg1_.ActGreedy();
+  ASSERT_TRUE((res || !res));
 
 }
 
