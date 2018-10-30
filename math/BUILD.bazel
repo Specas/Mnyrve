@@ -104,4 +104,13 @@ cc_library(
     ],
 )
 
+cc_library(
+    name = "tensor3", 
+    hdrs = ["tensor/include/tensor3.h"],
+    deps = [
+        "//common:macros",
+        "//third_party/Eigen:eigen", 
+    ],
+)
+
 

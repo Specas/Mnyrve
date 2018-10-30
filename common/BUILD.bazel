@@ -2,6 +2,15 @@
 
 package(default_visibility = ["//visibility:public"])
 
+# Combined macros target
+cc_library(
+    name = "macros",
+    deps = [
+        ":error_macros",
+    ],
+)
+        
+
 cc_library(
     name = "types",
     hdrs = [
@@ -10,7 +19,7 @@ cc_library(
 )
 
 cc_library(
-    name = "macros",
+    name = "error_macros",
     hdrs = [
         "include/error_macros.h",
     ],

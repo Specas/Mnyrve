@@ -1,0 +1,11 @@
+# -*- python -*-
+
+cc_test(
+    name = "tensor3_test", 
+    srcs = ["tensor3_test.cc"], 
+    copts = ["-Iexternal/gtests/include"], 
+    deps = [
+        "@gtest//:main", 
+        "//math:tensor3", 
+    ], 
+)
