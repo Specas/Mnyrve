@@ -1,5 +1,5 @@
-#ifndef TENSOR3_H
-#define TENSOR3_H
+#ifndef TENSOR4_H
+#define TENSOR4_H
 
 #include "common/include/error_macros.h"
 #include "third_party/Eigen/Dense"
@@ -8,20 +8,24 @@ namespace mnyrve {
 namespace math {
 
 template<typename type>
-class Tensor3 {
+class Tensor4 {
 
   public:
-    Tensor3(int depth, int rows, int cols) {
+    Tensor4(int height, int depth, int rows, int cols) {
 
+      height_ = height;
       depth_ = depth;
       rows_ = rows;
       cols_ = cols;
-      actual_rows_ = rows;
+      actual_rows_ = rows*height;
       actual_cols_ = cols*depth;
-      m_.resize(actual_rows_, actual_cols_);
       SetM(Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic>
           ::Zero(actual_rows_, actual_cols_));
 
+    }
+
+    int height() {
+      return height_;
     }
 
     int depth() {
@@ -36,28 +40,30 @@ class Tensor3 {
       return cols_;
     }
 
-
     void SetZero() {
 
       SetM(Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic>
-        ::Zero(actual_rows_, actual_cols_));
+          ::Zero(actual_rows_, actual_cols_));
 
     }
 
     Eigen::Ref<Eigen::Matrix<type, Eigen::Dynamic, Eigen::Dynamic>> operator()(
-        int depth_index) {
+        int height_index, int depth_index) {
 
-      return m_.block(0, depth_index*cols_, actual_rows_, cols_);
+      return m_.block(height_index*rows_, depth_index*cols_, rows_, cols_);
 
     }
 
-    type& operator()(int depth_index, int row_index, int column_index) {
+    type& operator()(
+        int height_index, int depth_index, int row_index, int column_index) {
 
-      return m_(row_index, depth_index*cols_ + column_index);
+      return m_(height_index*rows_ + row_index,
+          depth_index*cols_ + column_index);
 
     }
 
   private:
+    int height_;
     int depth_;
     int rows_;
     int cols_;
@@ -69,11 +75,12 @@ class Tensor3 {
       m_ = m;
     }
 
-
 };
-
 
 } // namespace math
 } // namespace mnyrve
 
+
+
 #endif
+

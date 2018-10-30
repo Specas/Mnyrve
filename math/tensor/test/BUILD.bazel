@@ -9,3 +9,13 @@ cc_test(
         "//math:tensor3",
     ],
 )
+
+cc_test(
+    name = "tensor4_test",
+    srcs = ["tensor4_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//math:tensor4",
+    ],
+)
