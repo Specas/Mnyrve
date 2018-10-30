@@ -7,7 +7,7 @@ cc_test(
     deps = [
         "@gtest//:main", 
         "//math:matrix_checks",
-    ]
+    ],
 )
 
 cc_test(
@@ -17,7 +17,7 @@ cc_test(
     deps = [
         "@gtest//:main", 
         "//math:matrix_operations",
-    ]
+    ],
 )
 
 
