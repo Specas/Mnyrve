@@ -9,7 +9,7 @@ cc_test(
         "//common:types", 
         "//constructs:discrete_oracle",
         "//third_party/Eigen:eigen",
-    ]
+    ],
 )
 
 cc_test(
@@ -21,5 +21,17 @@ cc_test(
         "//common:types", 
         "//constructs:epsilon_greedy",
         "//third_party/Eigen:eigen",
-    ]
+    ],
+)
+
+cc_test( 
+    name = "finite_v_function_test", 
+    srcs = ["finite_v_function_test.cc"], 
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//common:types", 
+        "//constructs:finite_v_function",
+        "//third_party/Eigen:eigen",
+    ], 
 )

@@ -95,7 +95,6 @@ TEST_F(DiscreteOracleTest, OperatorCheck) {
 }
 
 
-
 } // namespace
 
 int main(int argc, char **argv) {
