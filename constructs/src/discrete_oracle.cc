@@ -16,11 +16,11 @@ DiscreteOracle::DiscreteOracle(Eigen::VectorXd rewards) {
 
 }
 
-double& DiscreteOracle::operator[](int ind) {
+double& DiscreteOracle::operator()(int ind) {
   return rewards_(ind, 0);
 }
 
-double& DiscreteOracle::operator[](std::string key) {
+double& DiscreteOracle::operator()(std::string key) {
 
   MN_REQUIRE((!rewards_map_.empty()), 
         "Cannot access the oracle by string if a map hasn't been provided.");
