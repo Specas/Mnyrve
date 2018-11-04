@@ -3,12 +3,11 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_library(
-    name = "discrete_markov_process",
-    hdrs = ["include/discrete_markov_process.h"],
-    srcs = ["src/discrete_markov_process.cc"],
+    name = "finite_mdp",
+    hdrs = ["include/finite_mdp.h"],
+    srcs = ["src/finite_mdp.cc"],
     deps = [
         "//common:macros",
-        "//common:types",
         "//math:matrix_math",
         "//third_party/Eigen:eigen",
     ],

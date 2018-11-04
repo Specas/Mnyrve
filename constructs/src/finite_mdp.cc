@@ -1,4 +1,4 @@
-#include "constructs/include/discrete_markov_process.h"
+#include "constructs/include/finite_mdp.h"
 
 
 using mnyrve::math::IsStochasticMatrix;
@@ -8,10 +8,10 @@ using mnyrve::math::IsSquare;
 namespace mnyrve {
 namespace constructs {
 
-DiscreteMarkovProcess::DiscreteMarkovProcess(int num_states):
+FiniteMDP::FiniteMDP(int num_states):
   num_states_{num_states} {}
 
-DiscreteMarkovProcess::DiscreteMarkovProcess(
+FiniteMDP::FiniteMDP(
     Eigen::MatrixXd state_transition_matrix) {
 
   MN_REQUIRE(IsSquare(state_transition_matrix), 

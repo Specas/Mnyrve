@@ -1,8 +1,7 @@
-#ifndef DISCRETE_MARKOV_PROCESS_H
-#define DISCRETE_MARKOV_PROCESS_H
+#ifndef FINITE_MDP_H
+#define FINITE_MDP_H
 
 #include "common/include/error_macros.h"
-#include "common/include/types.h"
 #include "math/matrix/include/matrix_checks.h"
 #include "third_party/Eigen/Dense"
 
@@ -11,11 +10,11 @@
 namespace mnyrve {
 namespace constructs {
 
-class DiscreteMarkovProcess {
+class FiniteMDP {
 
   public:
-    DiscreteMarkovProcess(int num_states);
-    DiscreteMarkovProcess(Eigen::MatrixXd state_transition_matrix);
+    FiniteMDP(int num_states);
+    FiniteMDP(Eigen::MatrixXd state_transition_matrix);
 
   private:
     int num_states_;
