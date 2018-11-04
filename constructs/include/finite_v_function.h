@@ -17,7 +17,7 @@ class FiniteVFunction {
     Eigen::VectorXd GetValue();
     void SetValue(Eigen::VectorXd value);
 
-    double& operator[](int ind);
+    double& operator()(int ind);
 
   private:
     int num_states_;

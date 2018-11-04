@@ -33,7 +33,7 @@ void FiniteVFunction::SetValue(Eigen::VectorXd value) {
   value_ = value;
 }
 
-double& FiniteVFunction::operator[](int ind) {
+double& FiniteVFunction::operator()(int ind) {
 
   return value_(ind);
 

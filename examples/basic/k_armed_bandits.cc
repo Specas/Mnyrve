@@ -52,7 +52,7 @@ int main(int argc, char* argv[]) {
   for (int i = 0; i< max_iterations; i++) {
 
     int action = armed_bandit.TakeAction();
-    double reward = oracle[action] + noise_sampler.SampleValue();
+    double reward = oracle(action) + noise_sampler.SampleValue();
     armed_bandit.RegisterReward(action, reward);
 
     y_reward(i) = reward;

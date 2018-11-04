@@ -30,7 +30,7 @@ TEST_F(FiniteVFunctionTest, InitializationCheck) {
   ASSERT_TRUE(v1_.GetValue().isZero());
   EXPECT_EQ(v2_.GetNumStates(), 73);
   for (int i = 0; i < value1.rows(); i++) {
-    EXPECT_EQ(v2_[i], value1(i));
+    EXPECT_EQ(v2_(i), value1(i));
   }
 
 }
@@ -51,14 +51,11 @@ TEST_F(FiniteVFunctionTest, OperatorCheck) {
 
   VectorXd value2 = VectorXd::Random(5);
   v1_.SetValue(value2);
-  v1_[2] = 93.4;
+  v1_(2) = 93.4;
   value2(2) = 93.4;
   ASSERT_TRUE(v1_.GetValue().isApprox(value2));
 
 }
-
-  
-
 
 
 } // namespace

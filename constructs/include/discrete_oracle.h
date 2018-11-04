@@ -17,8 +17,8 @@ class DiscreteOracle {
     DiscreteOracle(Eigen::VectorXd rewards);
     DiscreteOracle(std::map<std::string, double> rewards_map);
 
-    double& operator[](int ind);
-    double& operator[](std::string key);
+    double& operator()(int ind);
+    double& operator()(std::string key);
 
     int GetNumRewards();
     Eigen::VectorXd GetRewards();
