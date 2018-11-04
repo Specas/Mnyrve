@@ -7,12 +7,13 @@ namespace mnyrve {
 namespace math {
 
 template<typename T>
-bool IsSquare(Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> m) {
+bool IsSquare(Eigen::Ref<Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic>> m) {
   return m.rows() == m.cols();
 }
 
 template<typename T>
-bool IsStochasticMatrix(Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic> m) {
+bool IsStochasticMatrix(
+    Eigen::Ref<Eigen::Matrix<T, Eigen::Dynamic, Eigen::Dynamic>> m) {
   auto col_sum = m.rowwise().sum();
   return col_sum.isOnes() && (m.minCoeff() >= 0);
 }
