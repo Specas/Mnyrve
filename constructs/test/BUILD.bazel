@@ -6,9 +6,7 @@ cc_test(
     copts = ["-Iexternal/gtest/include"],
     deps = [
         "@gtest//:main", 
-        "//common:types", 
         "//constructs:discrete_oracle",
-        "//third_party/Eigen:eigen",
     ],
 )
 
@@ -18,9 +16,7 @@ cc_test(
     copts = ["-Iexternal/gtest/include"],
     deps = [
         "@gtest//:main", 
-        "//common:types", 
         "//constructs:epsilon_greedy",
-        "//third_party/Eigen:eigen",
     ],
 )
 
@@ -30,9 +26,7 @@ cc_test(
     copts = ["-Iexternal/gtest/include"],
     deps = [
         "@gtest//:main", 
-        "//common:types", 
         "//constructs:finite_v_function",
-        "//third_party/Eigen:eigen",
     ], 
 )
 
@@ -42,8 +36,20 @@ cc_test(
     copts = ["-Iexternal/gtest/include"],
     deps = [
         "@gtest//:main", 
-        "//common:types", 
         "//constructs:finite_q_function",
+    ], 
+)
+
+cc_test( 
+    name = "finite_mdp_test", 
+    srcs = ["finite_mdp_test.cc"], 
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//common:types", 
+        "//constructs:finite_mdp",
+        "//math:tensor3",
         "//third_party/Eigen:eigen",
     ], 
 )
+

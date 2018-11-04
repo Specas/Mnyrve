@@ -9,6 +9,7 @@ cc_library(
     deps = [
         "//common:macros",
         "//math:matrix_math",
+        "//math:tensor3",
         "//third_party/Eigen:eigen",
     ],
 )
