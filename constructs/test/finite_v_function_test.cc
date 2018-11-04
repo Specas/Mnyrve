@@ -3,7 +3,6 @@
 
 using mnyrve::constructs::FiniteVFunction;
 using Eigen::VectorXd;
-using Eigen::MatrixXd;
 
 namespace {
 
@@ -29,6 +28,7 @@ TEST_F(FiniteVFunctionTest, InitializationCheck) {
   EXPECT_EQ(v1_.GetNumStates(), 5);
   ASSERT_TRUE(v1_.GetValue().isZero());
   EXPECT_EQ(v2_.GetNumStates(), 73);
+
   for (int i = 0; i < value1.rows(); i++) {
     EXPECT_EQ(v2_(i), value1(i));
   }
@@ -49,11 +49,11 @@ TEST_F(FiniteVFunctionTest, SetterCheck) {
 
 TEST_F(FiniteVFunctionTest, OperatorCheck) {
 
-  VectorXd value2 = VectorXd::Random(5);
-  v1_.SetValue(value2);
+  VectorXd value4 = VectorXd::Random(5);
+  v1_.SetValue(value4);
   v1_(2) = 93.4;
-  value2(2) = 93.4;
-  ASSERT_TRUE(v1_.GetValue().isApprox(value2));
+  value4(2) = 93.4;
+  ASSERT_TRUE(v1_.GetValue().isApprox(value4));
 
 }
 

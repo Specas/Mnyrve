@@ -1,6 +1,7 @@
 #ifndef FINITE_Q_FUNCTION_H
 #define FINITE_Q_FUNCTION_H
 
+#include "common/include/error_macros.h"
 #include "third_party/Eigen/Dense"
 
 namespace mnyrve {
@@ -15,9 +16,9 @@ class FiniteQFunction {
     int GetNumStates();
     int GetNumActions();
     Eigen::MatrixXd GetValue();
-    void SetValue();
+    void SetValue(Eigen::MatrixXd value);
 
-    double& operator[](int row, int col);
+    double& operator()(int row, int col);
 
 
   private:
