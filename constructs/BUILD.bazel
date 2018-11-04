@@ -24,6 +24,16 @@ cc_library(
 )
 
 cc_library(
+    name = "finite_q_function", 
+    hdrs = ["include/finite_q_function.h"], 
+    srcs = ["src/finite_q_function.cc"], 
+    deps = [
+        "//common:macros", 
+        "//third_party/Eigen:eigen", 
+    ], 
+)
+
+cc_library(
     name = "discrete_oracle",
     hdrs = ["include/discrete_oracle.h"],
     srcs = ["src/discrete_oracle.cc"],

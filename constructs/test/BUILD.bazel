@@ -35,3 +35,15 @@ cc_test(
         "//third_party/Eigen:eigen",
     ], 
 )
+
+cc_test( 
+    name = "finite_q_function_test", 
+    srcs = ["finite_q_function_test.cc"], 
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//common:types", 
+        "//constructs:finite_q_function",
+        "//third_party/Eigen:eigen",
+    ], 
+)
