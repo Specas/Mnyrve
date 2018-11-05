@@ -46,10 +46,7 @@ cc_test(
     copts = ["-Iexternal/gtest/include"],
     deps = [
         "@gtest//:main", 
-        "//common:types", 
         "//constructs:finite_mdp",
-        "//math:tensor3",
-        "//third_party/Eigen:eigen",
     ], 
 )
 

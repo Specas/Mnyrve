@@ -29,6 +29,11 @@ class FiniteMDP {
     mnyrve::math::Tensor3<double> GetStateTransitionTensor();
     Eigen::MatrixXd GetExpectedRewards();
 
+    void SetGamma(double gamma);
+    void SetStateTransitionTensor(
+        mnyrve::math::Tensor3<double> state_transition_tensor);
+    void SetExpectedRewards(Eigen::MatrixXd expected_rewards);
+
 
   private:
     int num_states_;
