@@ -3,6 +3,27 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_library(
+    name = "discrete_oracle",
+    hdrs = ["include/discrete_oracle.h"],
+    srcs = ["src/discrete_oracle.cc"],
+    deps = [
+        "//common:macros",
+        "//third_party/Eigen:eigen",
+    ],
+)
+
+cc_library(
+    name = "epsilon_greedy",
+    hdrs = ["include/epsilon_greedy.h"],
+    srcs = ["src/epsilon_greedy.cc"],
+    deps = [
+        "//common:macros",
+        "//math:uniform_distribution", 
+        "//math:sampler",
+    ],
+)
+
+cc_library(
     name = "finite_mdp",
     hdrs = ["include/finite_mdp.h"],
     srcs = ["src/finite_mdp.cc"],
@@ -35,22 +56,11 @@ cc_library(
 )
 
 cc_library(
-    name = "discrete_oracle",
-    hdrs = ["include/discrete_oracle.h"],
-    srcs = ["src/discrete_oracle.cc"],
+    name = "finite_policy", 
+    hdrs = ["include/finite_policy.h"], 
+    srcs = ["src/finite_policy.cc"], 
     deps = [
-        "//common:macros",
-        "//third_party/Eigen:eigen",
-    ],
-)
-
-cc_library(
-    name = "epsilon_greedy",
-    hdrs = ["include/epsilon_greedy.h"],
-    srcs = ["src/epsilon_greedy.cc"],
-    deps = [
-        "//common:macros",
-        "//math:uniform_distribution", 
-        "//math:sampler",
-    ],
+        "//common:macros", 
+        "//third_party/Eigen:eigen", 
+    ], 
 )

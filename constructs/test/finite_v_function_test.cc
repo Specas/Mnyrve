@@ -1,10 +1,10 @@
 #include "gtest/gtest.h"
 #include "constructs/include/finite_v_function.h"
 
+namespace {
+
 using mnyrve::constructs::FiniteVFunction;
 using Eigen::VectorXd;
-
-namespace {
 
 class FiniteVFunctionTest : public ::testing::Test {
 

@@ -1,13 +1,13 @@
 #include "gtest/gtest.h"
 #include "math/matrix/include/matrix_operations.h"
 
+namespace {
+
 using Eigen::MatrixXd;
 using mnyrve::common::types::MaxMatrixType;
 using mnyrve::common::types::MinMatrixType;
 using mnyrve::math::MaxOrRandom;
 using mnyrve::math::MinOrRandom;
-
-namespace {
 
 class MatrixOperationsTest : public ::testing::Test {
 

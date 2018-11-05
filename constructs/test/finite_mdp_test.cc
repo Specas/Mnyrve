@@ -1,11 +1,11 @@
 #include "gtest/gtest.h"
 #include "constructs/include/finite_mdp.h"
 
+namespace {
+
 using Eigen::MatrixXd;
 using mnyrve::constructs::FiniteMDP;
 using mnyrve::math::Tensor3;
-
-namespace {
 
 class FiniteMDPTest : public ::testing::Test {
 

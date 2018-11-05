@@ -50,3 +50,13 @@ cc_test(
     ], 
 )
 
+cc_test( 
+    name = "finite_policy_test", 
+    srcs = ["finite_policy_test.cc"], 
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//constructs:finite_policy",
+    ], 
+)
+

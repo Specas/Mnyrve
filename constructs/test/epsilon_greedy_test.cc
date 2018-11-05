@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
 #include "constructs/include/epsilon_greedy.h"
 
-using mnyrve::constructs::EpsilonGreedy;
-
 namespace {
+
+using mnyrve::constructs::EpsilonGreedy;
 
 class EpsilonGreedyTest : public ::testing::Test {
 
