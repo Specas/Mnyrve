@@ -1,10 +1,10 @@
 #include "gtest/gtest.h"
 #include "constructs/include/finite_q_function.h"
 
+namespace {
+
 using mnyrve::constructs::FiniteQFunction;
 using Eigen::MatrixXd;
-
-namespace {
 
 class FiniteQFunctionTest : public ::testing::Test {
 

@@ -1,14 +1,13 @@
 #include "gtest/gtest.h"
 #include "math/misc/include/incremental_average.h"
 
+namespace {
+
+using Eigen::MatrixXd;
 using mnyrve::math::IncrementalAverage;
 using mnyrve::common::types::ProcessType;
-using Eigen::MatrixXd;
 
 using std::map;
-
-
-namespace {
 
 class IncrementalAverageTest : public ::testing::Test {
 

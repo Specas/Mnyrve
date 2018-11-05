@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
 #include "math/probability/include/normal_distribution.h"
 
-using mnyrve::math::NormalDistribution;
-
 namespace {
+
+using mnyrve::math::NormalDistribution;
 
 class NormalDistributionTest : public ::testing::Test {
 

@@ -1,11 +1,10 @@
 #include "gtest/gtest.h"
 #include "math/tensor/include/tensor3.h"
 
+namespace {
+
 using mnyrve::math::Tensor3;
 using Eigen::MatrixXd;
-
-
-namespace {
 
 class Tensor3Test : public ::testing::Test {
 

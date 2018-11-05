@@ -3,6 +3,8 @@
 #include "math/probability/include/normal_distribution.h"
 #include "math/probability/include/uniform_distribution.h"
 
+namespace {
+
 using mnyrve::math::NormalDistribution;
 using mnyrve::math::UniformDistribution;
 using mnyrve::math::Sampler;
@@ -12,8 +14,6 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 using Eigen::ArrayXd;
 using std::make_unique;
-
-namespace {
 
 class SamplerTest : public ::testing::Test {
 

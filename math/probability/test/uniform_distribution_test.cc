@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
 #include "math/probability/include/uniform_distribution.h"
 
-using mnyrve::math::UniformDistribution;
-
 namespace {
+
+using mnyrve::math::UniformDistribution;
 
 class UniformDistributionTest : public ::testing::Test {
 

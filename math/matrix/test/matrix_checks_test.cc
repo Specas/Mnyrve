@@ -1,11 +1,11 @@
 #include "gtest/gtest.h"
 #include "math/matrix/include/matrix_checks.h"
 
+namespace {
+
 using mnyrve::math::IsSquare;
 using mnyrve::math::IsStochasticMatrix;
 using Eigen::MatrixXd;
-
-namespace {
 
 class MatrixChecksTest : public ::testing::Test {
 

@@ -1,6 +1,8 @@
 #include "gtest/gtest.h"
 #include "constructs/include/discrete_oracle.h"
 
+namespace {
+
 using mnyrve::constructs::DiscreteOracle;
 using Eigen::VectorXd;
 using Eigen::MatrixXd;
@@ -8,8 +10,6 @@ using Eigen::ArrayXd;
 
 using std::map;
 using std::string;
-
-namespace {
 
 class DiscreteOracleTest : public ::testing::Test {
 

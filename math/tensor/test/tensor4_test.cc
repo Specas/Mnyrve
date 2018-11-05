@@ -1,10 +1,10 @@
 #include "gtest/gtest.h"
 #include "math/tensor/include/tensor4.h"
 
+namespace {
+
 using mnyrve::math::Tensor4;
 using Eigen::MatrixXd;
-
-namespace {
 
 class Tensor4Test : public ::testing::Test {
 
