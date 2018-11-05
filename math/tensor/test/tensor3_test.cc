@@ -39,6 +39,15 @@ TEST_F(Tensor3Test, InitializationCheck) {
   EXPECT_EQ(t3_.rows(), 3);
   EXPECT_EQ(t3_.cols(), 4);
 
+  // Initializer list initializer check
+  MatrixXd m1 = MatrixXd::Random(2, 2);
+  MatrixXd m2 = MatrixXd::Random(2, 2);
+  MatrixXd m3 = MatrixXd::Random(2, 2);
+  Tensor3<double> t4({m1, m2, m3});
+  ASSERT_TRUE(t4(0).isApprox(m1));
+  ASSERT_TRUE(t4(1).isApprox(m2));
+  ASSERT_TRUE(t4(2).isApprox(m3));
+
 }
 
 
@@ -84,6 +93,19 @@ TEST_F(Tensor3Test, SetterCheck2) {
   ASSERT_EQ(t1_(0, 0, 0), 5);
   ASSERT_EQ(t2_(0, 1, 0), 2);
   ASSERT_EQ(t3_(2, 2, 3), -0.1);
+
+}
+
+TEST_F(Tensor3Test, ApproxCheck) {
+
+  Tensor3<double> t5(2, 2, 2); 
+  ASSERT_TRUE(t5.isApprox(t1_));
+  t5(1) = MatrixXd::Random(2, 2);
+  ASSERT_FALSE(t5.isApprox(t1_));
+
+  ASSERT_DEATH((t5.isApprox(Tensor3<double>(1, 2, 2))), "");
+  ASSERT_DEATH((t5.isApprox(Tensor3<double>(2, 3, 2))), "");
+  ASSERT_DEATH((t5.isApprox(Tensor3<double>(2, 2, 4))), "");
 
 }
 
