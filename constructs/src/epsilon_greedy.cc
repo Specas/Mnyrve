@@ -1,10 +1,10 @@
 #include "constructs/include/epsilon_greedy.h"
 
-using mnyrve::math::UniformDistribution;
-using mnyrve::math::Sampler;
-
 namespace mnyrve {
 namespace constructs {
+
+using mnyrve::math::UniformDistribution;
+using mnyrve::math::Sampler;
 
 EpsilonGreedy::EpsilonGreedy(double epsilon):
   epsilon_(epsilon),
