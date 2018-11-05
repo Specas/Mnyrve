@@ -4,6 +4,7 @@ namespace mnyrve {
 namespace constructs {
 
 using Eigen::MatrixXd;
+using mnyrve::math::IsStochasticMatrix;
 
 FinitePolicy::FinitePolicy(int num_states, int num_actions):
   num_states_(num_states), num_actions_(num_actions), 
@@ -30,6 +31,8 @@ void FinitePolicy::SetPolicyMatrix(Eigen::MatrixXd policy_matrix) {
   MN_REQUIRE(((policy_matrix.rows() == num_states_) &&
         (policy_matrix.cols() == num_actions_)), 
         "Policy matrix dimensions should match state and action dimensions.");
+  MN_REQUIRE((IsStochasticMatrix<double>(policy_matrix)),
+      "Policy matrix is not stochastic.");
 
   policy_matrix_ = policy_matrix;
 

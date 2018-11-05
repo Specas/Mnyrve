@@ -25,9 +25,9 @@ FiniteMDP::FiniteMDP(Tensor3<double> state_transition_tensor,
     MN_REQUIRE((state_transition_tensor.depth() == num_actions), 
         "The length of the first dimension must match num_actions");
     for (int i = 0; i < num_actions; i++) {
-      MN_REQUIRE(IsSquare(state_transition_tensor(i)), 
+      MN_REQUIRE(IsSquare<double>(state_transition_tensor(i)), 
             "Each state transition matrix must be square.");
-      MN_REQUIRE(IsStochasticMatrix(state_transition_tensor(i)), 
+      MN_REQUIRE(IsStochasticMatrix<double>(state_transition_tensor(i)), 
           "The rows of each state transition matrix must sum to one.");
     }
 }
@@ -44,9 +44,9 @@ FiniteMDP::FiniteMDP(Tensor3<double> state_transition_tensor,
     MN_REQUIRE((state_transition_tensor.depth() == num_actions), 
         "The length of the first dimension must match num_actions");
     for (int i = 0; i < num_actions; i++) {
-      MN_REQUIRE(IsSquare(state_transition_tensor(i)), 
+      MN_REQUIRE(IsSquare<double>(state_transition_tensor(i)), 
             "Each state transition matrix must be square.");
-      MN_REQUIRE(IsStochasticMatrix(state_transition_tensor(i)), 
+      MN_REQUIRE(IsStochasticMatrix<double>(state_transition_tensor(i)), 
           "The rows of each state transition matrix must sum to one.");
     }
     MN_REQUIRE(((expected_rewards.rows() == num_states_) &&
