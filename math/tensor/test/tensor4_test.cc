@@ -94,6 +94,20 @@ TEST_F(Tensor4Test, SetterCheck2) {
 
 }
 
+TEST_F(Tensor4Test, ApproxCheck) {
+
+  Tensor4<double> t4(3, 7, 4, 1); 
+  ASSERT_TRUE(t4.isApprox(t3_));
+  t4(1, 3) = MatrixXd::Random(4, 1);
+  ASSERT_FALSE(t4.isApprox(t3_));
+
+  ASSERT_DEATH((t4.isApprox(Tensor4<double>(4, 7, 4, 1))), "");
+  ASSERT_DEATH((t4.isApprox(Tensor4<double>(3, 5, 4, 1))), "");
+  ASSERT_DEATH((t4.isApprox(Tensor4<double>(3, 7, 6, 1))), "");
+  ASSERT_DEATH((t4.isApprox(Tensor4<double>(3, 7, 6, 2))), "");
+
+}
+
 } // namespace
 
 int main(int argc, char **argv) {

@@ -62,6 +62,25 @@ class Tensor4 {
 
     }
 
+    bool isApprox(Tensor4<type> tensor) {
+
+      MN_REQUIRE(((this->height() == tensor.height()) &&
+            (this->depth() == tensor.depth()) &&
+            (this->rows() == tensor.rows()) &&
+            (this->cols() == tensor.cols())), 
+          "Tensor dimensions must match.");
+
+      bool res{true};
+      for (int i = 0; i < tensor.height(); i++) {
+        for (int j = 0; j < tensor.depth(); j++) {
+          res = res && (this->operator()(i, j).isApprox(tensor(i, j)));
+        }
+      }
+
+      return res;
+
+    }
+
   private:
     int height_;
     int depth_;
