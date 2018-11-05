@@ -1,9 +1,9 @@
 #include "math/statistics/include/sampler.h"
 
-using ContDistribution = mnyrve::math::ContinuousProbabilityDistribution;
-
 namespace mnyrve {
 namespace math {
+
+using ContDistribution = mnyrve::math::ContinuousProbabilityDistribution;
 
 Sampler::Sampler(std::unique_ptr<ContDistribution> distribution, 
                  double x_min, 
