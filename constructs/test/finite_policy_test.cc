@@ -37,10 +37,10 @@ TEST_F(FinitePolicyTest, InitializationCheck) {
 
 TEST_F(FinitePolicyTest, SetterCheck) {
 
-  MatrixXd m2 = MatrixXd::Random(4, 6);
+  MatrixXd m2 = MatrixXd::Identity(4, 6);
   fp2_.SetPolicyMatrix(m2);
   ASSERT_TRUE(fp2_.GetPolicyMatrix().isApprox(m2));
-  ASSERT_DEATH(fp2_.SetPolicyMatrix(MatrixXd::Zero(4, 5)), "");
+  ASSERT_DEATH(fp2_.SetPolicyMatrix(MatrixXd::Identity(4, 5)), "");
   ASSERT_DEATH(fp2_.SetPolicyMatrix(MatrixXd::Zero(2, 6)), "");
 
 }

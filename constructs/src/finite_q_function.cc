@@ -24,7 +24,8 @@ Eigen::MatrixXd FiniteQFunction::GetValue() {
 
 void FiniteQFunction::SetValue(Eigen::MatrixXd value) {
 
-  MN_REQUIRE(((value.rows() == num_states_) && (value.cols() == num_actions_)), 
+  MN_REQUIRE(((value.rows() == num_states_) && (value.cols() == num_actions_)),
+
       "The input size must be (num_states x num_actions)");
   value_ = value;
 

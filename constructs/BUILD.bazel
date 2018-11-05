@@ -61,6 +61,7 @@ cc_library(
     srcs = ["src/finite_policy.cc"], 
     deps = [
         "//common:macros", 
+        "//math:matrix_checks",
         "//third_party/Eigen:eigen", 
     ], 
 )

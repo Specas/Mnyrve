@@ -2,6 +2,7 @@
 #define FINITE_POLICY_H
 
 #include "common/include/error_macros.h"
+#include "math/matrix/include/matrix_checks.h"
 #include "third_party/Eigen/Dense"
 
 namespace mnyrve {
