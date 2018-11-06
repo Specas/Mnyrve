@@ -18,7 +18,7 @@ class FiniteQFunctionTest : public ::testing::Test {
     }
 
     FiniteQFunction q1_{FiniteQFunction(2, 3)};
-    MatrixXd value1 = MatrixXd::Random(73, 101);
+    MatrixXd value1{MatrixXd::Random(73, 101)};
     FiniteQFunction q2_{FiniteQFunction(value1)};
 
 };

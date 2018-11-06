@@ -18,7 +18,7 @@ class FinitePolicyTest : public ::testing::Test {
     }
 
     FinitePolicy fp1_{FinitePolicy(1600, 10)};
-    MatrixXd m1 = MatrixXd::Identity(4, 6);
+    MatrixXd m1{MatrixXd::Identity(4, 6)};
     FinitePolicy fp2_{FinitePolicy(m1)};
 
 };

@@ -12,7 +12,12 @@ FinitePolicy::FinitePolicy(int num_states, int num_actions):
 
 FinitePolicy::FinitePolicy(MatrixXd policy_matrix):
   num_states_(policy_matrix.rows()), num_actions_(policy_matrix.cols()), 
-  policy_matrix_(policy_matrix) {}
+  policy_matrix_(policy_matrix) {
+  
+  MN_REQUIRE((IsStochasticMatrix<double>(policy_matrix)),
+      "Policy matrix is not stochastic.");
+
+  }
 
 int FinitePolicy::GetNumStates() {
   return num_states_;
