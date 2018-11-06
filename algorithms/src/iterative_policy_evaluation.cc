@@ -68,7 +68,7 @@ void IterativePolicyEvaluation::Evaluate(
     v_function_->SetValue(expected_rewards_pi + gamma_*expected_value_pi);
 
 
-  } while(value_norm > stop_threshold);
+  } while (value_norm > stop_threshold);
 
 
 }

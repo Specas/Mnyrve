@@ -63,6 +63,13 @@ def setup_grid_world(num_states):
     CELL_START = (240, 209, 122)
     CELL_GOAL = (82, 168, 82)
 
+    colors = (BACKGROUND,
+              CELL_NORMAL,
+              CELL_HIGHLIGHTED,
+              CELL_OBSTACLE,
+              CELL_START,
+              CELL_GOAL) 
+
     # Computing the size of each cell and size of the window
     cell_size = 75
 
@@ -90,6 +97,11 @@ def setup_grid_world(num_states):
     # The mode can be 'obstacle', 'start' or 'goal'
     mode = 'obstacle'
 
+    """
+    Draw and control loop -----------------------------------------------------
+
+    """
+
     while not done:
 
         mouse_x, mouse_y = pygame.mouse.get_pos()
@@ -99,8 +111,9 @@ def setup_grid_world(num_states):
         col = int((mouse_x + cell_size/2)/(screen_width/cells_per_row) - 0.5)
         cell_highlighted_state = [0]*num_states
 
-        # Only updated highlighted cell if the cell is normal
-        if cell_state[row*cells_per_row + col] == 0:
+        # Only updated highlighted cell if the mouse in in the screen
+        # and the cell is normal
+        if pygame.mouse.get_focused() and  cell_state[row*cells_per_row + col] == 0:
             cell_highlighted_state[row*cells_per_row + col] = 1
 
         for event in pygame.event.get():
@@ -118,9 +131,8 @@ def setup_grid_world(num_states):
                 # The start cell must not be an obstacle cell
                 elif mode == 'start':
 
-                    if cell_state[row * cells_per_row + col] == 0:
+                    if (1 not in cell_state) and (cell_state[row * cells_per_row + col] == 0):
                         cell_state[row * cells_per_row + col] = 1
-                        mode = 'goal'
 
                 # The goal cell must not be a start or obstacle cell
                 else:
@@ -139,6 +151,11 @@ def setup_grid_world(num_states):
                     # Switching between modes
                     if mode == 'obstacle':
                         mode = 'start'
+                        break
+
+                    if mode == 'start':
+                        mode = 'goal'
+                        break
 
                     # Exiting
                     if mode == 'goal':
@@ -146,13 +163,6 @@ def setup_grid_world(num_states):
 
 
         # Drawing
-        colors = (BACKGROUND,
-                  CELL_NORMAL,
-                  CELL_HIGHLIGHTED,
-                  CELL_OBSTACLE,
-                  CELL_START,
-                  CELL_GOAL) 
-
         draw_cells(screen, colors, cell_state, cell_highlighted_state,
                 cell_size*cell_size_multiplier)
         pygame.display.flip()
