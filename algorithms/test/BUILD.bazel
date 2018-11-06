@@ -9,3 +9,14 @@ cc_test(
         "//algorithms:armed_bandits",
     ]
 )
+
+cc_test(
+    name = "iterative_policy_evaluation_test",
+    srcs = ["iterative_policy_evaluation_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//algorithms:iterative_policy_evaluation",
+        "//math:tensor3",
+    ]
+)

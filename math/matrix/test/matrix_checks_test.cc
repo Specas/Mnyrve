@@ -18,10 +18,10 @@ class MatrixChecksTest : public ::testing::Test {
 
     }
 
-    MatrixXd m1_ = MatrixXd::Random(4, 4);
-    MatrixXd m2_ = MatrixXd::Random(2, 3);
-    MatrixXd m3_ = MatrixXd::Identity(3, 3);
-    MatrixXd m4_ = MatrixXd::Ones(4, 4);
+    MatrixXd m1_{MatrixXd::Random(4, 4)};
+    MatrixXd m2_{MatrixXd::Random(2, 3)};
+    MatrixXd m3_{MatrixXd::Identity(3, 3)};
+    MatrixXd m4_{MatrixXd::Ones(4, 4)};
 
 
 };

@@ -28,7 +28,7 @@ class FiniteMDPTest : public ::testing::Test {
     FiniteMDP mdp1_{FiniteMDP(3, 2, 0.1)};
 
     Tensor3<double> t1{Tensor3<double>(4, 900, 900)};
-    MatrixXd m2 = MatrixXd::Random(7, 1);
+    MatrixXd m2{MatrixXd::Random(7, 1)};
     Tensor3<double> t2{Tensor3<double>(1, 7, 7)};
 
 };

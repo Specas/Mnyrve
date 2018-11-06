@@ -18,7 +18,7 @@ class FiniteVFunctionTest : public ::testing::Test {
     }
 
     FiniteVFunction v1_{FiniteVFunction(5)};
-    VectorXd value1 = VectorXd::Random(73);
+    VectorXd value1{VectorXd::Random(73)};
     FiniteVFunction v2_{FiniteVFunction(value1)};
 
 };
