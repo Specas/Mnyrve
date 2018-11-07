@@ -4,6 +4,7 @@ cc_binary(
     name = "grid_world_ipe", 
     srcs = ["grid_world_ipe.cc"], 
     deps = [
+        "//algorithms:iterative_policy_evaluation",
         "//common:macros", 
         "//environments:grid_world", 
         "@gflags_repo//:gflags",
