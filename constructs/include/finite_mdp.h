@@ -20,7 +20,7 @@ class FiniteMDP {
               double gamma);
     FiniteMDP(mnyrve::math::Tensor3<double> state_transition_tensor,
               int num_actions,
-              Eigen::MatrixXd expected_rewars, 
+              Eigen::MatrixXd expected_rewards, 
               double gamma);
 
     int GetNumStates();

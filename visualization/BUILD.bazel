@@ -16,7 +16,6 @@ cc_library(
         "//utility:path_util",
         "@python3_rep//:python3",
     ],
-
 )
 
 

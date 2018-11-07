@@ -1,0 +1,14 @@
+# -*- python -*-
+
+
+cc_test( 
+    name = "grid_world_test", 
+    srcs = ["grid_world_test.cc"], 
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//environments:grid_world",
+    ], 
+)
+
+
