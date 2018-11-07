@@ -24,7 +24,7 @@ DEFINE_int32(k, 10, "Number of actions in the bandit problem");
 DEFINE_double(alpha, 0.1, "Averaging step size");
 DEFINE_double(epsilon, 0.01, "Averaging step size");
 
-int main(int argc, char* argv[]) {
+int do_main(int argc, char* argv[]) {
 
   gflags::ParseCommandLineFlags(&argc, &argv, true);
 
@@ -86,5 +86,5 @@ int main(int argc, char* argv[]) {
 } // namespace mnyrve
 
 int main(int argc, char* argv[]) {
-  return mnyrve::examples::main(argc, argv);
+  return mnyrve::examples::do_main(argc, argv);
 }

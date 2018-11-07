@@ -73,5 +73,84 @@ void GridWorld::SetCellState(std::vector<double> cell_state) {
   cell_state_ = cell_state;
 }
 
+void GridWorld::SetUp() {
+
+  PyObject *pName, *pModule, *pFunc;
+  PyObject *pArgs, *pValue, *pListCellState, *pElem; 
+  PyObject *sysPath, *pythonPath;
+
+  Py_Initialize();
+  //size_t argv_size = strlen(argv) + 1;
+  //PySys_SetArgv(argc, argv.c_str());
+
+  // Reading the python paths from the text file in data/
+  std::ifstream python_paths_file("tools/data/python_paths.txt");
+
+  if (!python_paths_file) {
+    std::cerr << "Unable to open python_paths.txt" << std::endl;
+    exit(-3);
+  }
+
+  sysPath = PySys_GetObject("path");
+  std::string python_path;
+
+  while (std::getline(python_paths_file, python_path)) {
+
+    pythonPath = PyUnicode_DecodeFSDefault(python_path.c_str());
+    PyList_Append(sysPath, pythonPath);
+
+  }
+
+  std::string python_filel_name = "grid_world";
+  std::string python_function_name = "setup_grid_world";
+  pName = PyUnicode_DecodeFSDefault(python_filel_name.c_str());
+  pModule = PyImport_Import(pName);
+
+  if (pModule != NULL) {
+
+    pFunc = PyObject_GetAttrString(pModule, python_function_name.c_str());
+
+    if (pFunc && PyCallable_Check(pFunc)) {
+
+      pArgs = PyTuple_New(1);
+      pListCellState = PyList_New(num_states_);
+      
+      int set_error_code;
+
+      pElem = PyLong_FromLong(num_states_);
+      set_error_code = PyTuple_SetItem(pArgs, 0, pElem);
+      MN_REQUIRE((set_error_code == 0), 
+          "Failed to add number of states to argument.");
+
+      pValue = PyObject_CallObject(pFunc, pArgs);
+
+      // Addting to cell_state_
+      for (int i = 0; i < num_states_; i++) {
+
+        cell_state_.push_back(PyFloat_AsDouble(PyList_GetItem(pValue, i)));
+
+      }
+
+
+    } else {
+
+      std::cerr << "Cannot find function." << std::endl;
+      PyErr_Print();
+      exit(-3);
+
+    }
+
+  } else {
+
+    PyErr_Print();
+    std::cerr << "Cannot find file." << std::endl;
+    exit(-3);
+
+  }
+
+
+
+}
+
 } // namespace environments
 } // namespace mnyrve

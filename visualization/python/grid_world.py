@@ -1,6 +1,12 @@
 #!/usr/bin/env python
 
 import os
+import sys
+
+# Setting argv manually as calling using embedded python doesn't do this
+# It is required by pygame
+if not hasattr(sys, 'argv'):
+    sys.argv = ['']
 import math
 import pygame
 import random
@@ -67,6 +73,9 @@ def draw_value(screen, color, value, value_font, cell_size):
 
 
 def setup_grid_world(num_states):# {{{
+
+    if not hasattr(sys, 'argv'):
+        sys.argv = ['']
 
     # Verifying that the number of states is a square number
     assert int(math.sqrt(num_states))**2 == num_states, "Number of states is not a square"
@@ -212,6 +221,7 @@ def setup_grid_world(num_states):# {{{
     pygame.display.quit()
     pygame.quit()
     return cell_state
+
 # }}}
 
 
