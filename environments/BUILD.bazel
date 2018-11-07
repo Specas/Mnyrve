@@ -1,0 +1,17 @@
+# -*- python -*-
+
+package(default_visibility = ["//visibility:public"])
+
+cc_library(
+    name = "grid_world",
+    hdrs = [
+        "grid_world/include/grid_world.h", 
+    ], 
+    srcs = [
+        "grid_world/src/grid_world.cc", 
+    ], 
+    deps = [
+        "//common:macros", 
+        "@python3_rep//:python3", 
+    ], 
+) 
