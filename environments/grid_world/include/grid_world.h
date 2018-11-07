@@ -35,6 +35,7 @@ class GridWorld {
     void SetCellState(std::vector<double> cell_state);
 
     void SetUp();
+    void VisualizeValue(Eigen::VectorXd value);
 
 
 

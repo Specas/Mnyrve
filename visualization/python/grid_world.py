@@ -51,7 +51,7 @@ def draw_cells(screen, colors, cell_state, cell_highlighted_state, cell_size):
 
 
 # Draw the values on the cells (floating point numbers)
-def draw_value(screen, color, value, value_font, cell_size):
+def draw_value(screen, color, cell_state, value, value_font, cell_size):
 
     num_states = len(value)
     cells_per_row = int(math.sqrt(num_states))
@@ -65,9 +65,10 @@ def draw_value(screen, color, value, value_font, cell_size):
         x = (col + 0.5)*(screen.get_width()/cells_per_row) - cell_size/4
         y = (row + 0.5)*(screen.get_width()/cells_per_row) - cell_size/4
 
-        # Drawing the numbers
-        value_render = value_font.render(str(value[i]), True, color)
-        screen.blit(value_render, (x, y))
+        # Drawing the numbers (Except on obstacles and goals)
+        if cell_state[i] != -1 and cell_state[i] != 2:
+            value_render = value_font.render(str(value[i]), True, color)
+            screen.blit(value_render, (x, y))
 
 
 
@@ -218,8 +219,6 @@ def setup_grid_world(num_states):# {{{
         clock.tick(60)
 
     # Quitting and returning
-    pygame.display.quit()
-    pygame.quit()
     return cell_state
 
 # }}}
@@ -311,7 +310,7 @@ def visualize_grid_solution(cell_state, value):# {{{
         draw_cells(screen, colors, cell_state, cell_highlighted_state, \
                 cell_size*cell_size_multiplier)
         if display_value:
-            draw_value(screen, BACKGROUND, value, value_font, \
+            draw_value(screen, BACKGROUND, cell_state, value, value_font, \
                     cell_size*cell_size_multiplier)
         pygame.display.flip()
         clock.tick(60)
