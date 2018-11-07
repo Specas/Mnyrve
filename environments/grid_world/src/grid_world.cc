@@ -76,7 +76,7 @@ void GridWorld::SetCellState(std::vector<double> cell_state) {
 void GridWorld::SetUp() {
 
   PyObject *pName, *pModule, *pFunc;
-  PyObject *pArgs, *pValue, *pListCellState, *pElem; 
+  PyObject *pArgs, *pValue, *pElem; 
   PyObject *sysPath, *pythonPath;
 
   Py_Initialize();
@@ -113,7 +113,6 @@ void GridWorld::SetUp() {
     if (pFunc && PyCallable_Check(pFunc)) {
 
       pArgs = PyTuple_New(1);
-      pListCellState = PyList_New(num_states_);
       
       int set_error_code;
 
