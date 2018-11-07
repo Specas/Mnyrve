@@ -1,3 +1,3 @@
 # Mnyrve
 
-[![Build Status](https://travis-ci.com/Specas/Mnyrve.svg?branch=master)](https://travis-ci.com/Specas/Mnyrve)
+[![Build Status](https://travis-ci.com/shrenikm/Mnyrve.svg?branch=master)](https://travis-ci.com/shrenikm/Mnyrve)
