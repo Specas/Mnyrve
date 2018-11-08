@@ -13,7 +13,7 @@ IterativePolicyEvaluation::IterativePolicyEvaluation(
     std::unique_ptr<FiniteMDP> mdp, 
     std::unique_ptr<FinitePolicy> policy):
   mdp_(std::move(mdp)), policy_(std::move(policy)),
-  v_function_(std::make_unique<FiniteVFunction>(policy_->GetNumStates())),
+  v_function_(FiniteVFunction(policy_->GetNumStates())),
   num_states_(mdp_->GetNumStates()), num_actions_(mdp_->GetNumActions()), 
   gamma_(mdp_->GetGamma()) {
 
@@ -35,11 +35,11 @@ double IterativePolicyEvaluation::GetGamma() {
 }
 
 VectorXd IterativePolicyEvaluation::GetValueFunctionVector() {
-  return v_function_->GetValue();
+  return v_function_.GetValue();
 }
 
 FiniteVFunction IterativePolicyEvaluation::GetValueFunction() {
-  return FiniteVFunction(v_function_->GetValue());
+  return FiniteVFunction(v_function_.GetValue());
 }
 
 void IterativePolicyEvaluation::Evaluate(
@@ -69,7 +69,7 @@ void IterativePolicyEvaluation::Evaluate(
 
     value_norm = (expected_rewards_pi + gamma_*expected_value_pi - 
         GetValueFunctionVector()).norm();
-    v_function_->SetValue(expected_rewards_pi + gamma_*expected_value_pi);
+    v_function_.SetValue(expected_rewards_pi + gamma_*expected_value_pi);
 
   } while (value_norm > stop_threshold);
 
