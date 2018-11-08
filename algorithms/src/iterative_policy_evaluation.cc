@@ -34,8 +34,12 @@ double IterativePolicyEvaluation::GetGamma() {
   return gamma_;
 }
 
-VectorXd IterativePolicyEvaluation::GetValue() {
+VectorXd IterativePolicyEvaluation::GetValueFunctionVector() {
   return v_function_->GetValue();
+}
+
+FiniteVFunction IterativePolicyEvaluation::GetValueFunction() {
+  return FiniteVFunction(v_function_->GetValue());
 }
 
 void IterativePolicyEvaluation::Evaluate(
@@ -56,7 +60,7 @@ void IterativePolicyEvaluation::Evaluate(
 
     for (int i = 0; i < num_actions_; i++) {
 
-      expected_value.col(i) = mdp_->GetStateTransitionTensor()(i) * GetValue();
+      expected_value.col(i) = mdp_->GetStateTransitionTensor()(i) * GetValueFunctionVector();
 
     }
 
@@ -64,7 +68,7 @@ void IterativePolicyEvaluation::Evaluate(
       policy_->GetPolicyMatrix().array()).matrix().rowwise().sum();
 
     value_norm = (expected_rewards_pi + gamma_*expected_value_pi - 
-        GetValue()).norm();
+        GetValueFunctionVector()).norm();
     v_function_->SetValue(expected_rewards_pi + gamma_*expected_value_pi);
 
   } while (value_norm > stop_threshold);

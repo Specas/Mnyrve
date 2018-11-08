@@ -21,7 +21,8 @@ class IterativePolicyEvaluation {
     int GetNumStates();
     int GetNumActions();
     double GetGamma();
-    Eigen::VectorXd GetValue();
+    Eigen::VectorXd GetValueFunctionVector();
+    mnyrve::constructs::FiniteVFunction GetValueFunction();
 
     void Evaluate(double stop_threshold);
 

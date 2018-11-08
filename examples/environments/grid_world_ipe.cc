@@ -183,7 +183,7 @@ int do_main(int argc, char* argv[]) {
 
   // Solving for the value function
   solver.Evaluate(0.01);
-  grid_world.VisualizeValue(solver.GetValue());
+  grid_world.VisualizeValue(solver.GetValueFunctionVector());
 
   return 0;
 
