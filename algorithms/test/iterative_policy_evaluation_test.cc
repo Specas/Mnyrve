@@ -81,7 +81,8 @@ TEST_F(IterativePolicyEvaluationTest, InitializationCheck) {
   VectorXd res(2, 1);
   res << 1.5525, 
          0.3396;
-  ASSERT_TRUE(ipe2.GetValue().isApprox(res));
+  ASSERT_TRUE(ipe2.GetValueFunctionVector().isApprox(res));
+  ASSERT_TRUE(ipe2.GetValueFunction().GetValue().isApprox(res));
 
 
 }
