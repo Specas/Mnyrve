@@ -1,3 +1,4 @@
 *.pyc
 bazel-*
 my_tests/
+results/

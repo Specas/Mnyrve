@@ -1,10 +1,21 @@
 # -*- python -*-
 
 cc_binary(
-    name = "grid_world_ipe", 
-    srcs = ["grid_world_ipe.cc"], 
+    name = "grid_world_iterative_policy_evaluation", 
+    srcs = ["grid_world_iterative_policy_evaluation.cc"], 
     deps = [
         "//algorithms:iterative_policy_evaluation",
+        "//common:macros", 
+        "//environments:grid_world", 
+        "@gflags_repo//:gflags",
+    ], 
+)
+
+cc_binary(
+    name = "grid_world_policy_iteration", 
+    srcs = ["grid_world_policy_iteration.cc"], 
+    deps = [
+        "//algorithms:policy_iteration",
         "//common:macros", 
         "//environments:grid_world", 
         "@gflags_repo//:gflags",

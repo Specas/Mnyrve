@@ -20,3 +20,14 @@ cc_test(
         "//math:tensor3",
     ]
 )
+
+cc_test(
+    name = "policy_iteration_test",
+    srcs = ["policy_iteration_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//algorithms:policy_iteration",
+        "//math:tensor3",
+    ]
+)

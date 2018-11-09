@@ -1,5 +1,5 @@
-#ifndef ITERATIVE_POLICY_EVALUATION_H
-#define ITERATIVE_POLICY_EVALUATION_H
+#ifndef POLICY_ITERATION
+#define POLICY_ITERATION
 
 #include "constructs/include/finite_mdp.h"
 #include "constructs/include/finite_policy.h"
@@ -11,10 +11,10 @@
 namespace mnyrve {
 namespace algorithms {
 
-class IterativePolicyEvaluation {
+class PolicyIteration {
 
   public:
-    IterativePolicyEvaluation(
+    PolicyIteration(
         std::unique_ptr<mnyrve::constructs::FiniteMDP> mdp, 
         std::unique_ptr<mnyrve::constructs::FinitePolicy> init_policy);
 
@@ -23,6 +23,8 @@ class IterativePolicyEvaluation {
     double GetGamma();
     Eigen::VectorXd GetValueFunctionVector();
     mnyrve::constructs::FiniteVFunction GetValueFunction();
+    Eigen::MatrixXd GetPolicyMatrix();
+    mnyrve::constructs::FinitePolicy GetPolicy();
 
     void Evaluate(double stop_threshold);
 
@@ -35,6 +37,8 @@ class IterativePolicyEvaluation {
     double gamma_;
 
 };
+
+
 
 } // namespace algorithms
 } // namespace mnyrve
