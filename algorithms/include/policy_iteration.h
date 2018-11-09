@@ -16,14 +16,14 @@ class PolicyIteration {
   public:
     PolicyIteration(
         std::unique_ptr<mnyrve::constructs::FiniteMDP> mdp, 
-        std::unique_ptr<mnyrve::constructs::FinitePolicy> policy);
+        std::unique_ptr<mnyrve::constructs::FinitePolicy> init_policy);
 
     int GetNumStates();
     int GetNumActions();
     double GetGamma();
     Eigen::VectorXd GetValueFunctionVector();
     mnyrve::constructs::FiniteVFunction GetValueFunction();
-    Eigen::Matlab GetPolicyMatrix();
+    Eigen::MatrixXd GetPolicyMatrix();
     mnyrve::constructs::FinitePolicy GetPolicy();
 
     void Evaluate(double stop_threshold);
@@ -31,11 +31,12 @@ class PolicyIteration {
   private:
     std::unique_ptr<mnyrve::constructs::FiniteMDP> mdp_;
     std::unique_ptr<mnyrve::constructs::FinitePolicy> policy_;
-    std::unique_ptr<mnyrve::constructs::FiniteVFunction> v_function_;
-    std::unique_ptr<mnyrve::constructs::FinitePolicy> 
+    mnyrve::constructs::FiniteVFunction v_function_;
     int num_states_;
     int num_actions_;
     double gamma_;
+
+};
 
 
 

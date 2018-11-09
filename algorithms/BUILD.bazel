@@ -28,3 +28,16 @@ cc_library(
         "//third_party/Eigen:eigen",
     ],
 )
+
+cc_library(
+    name = "policy_iteration",
+    hdrs = ["include/policy_iteration.h"],
+    srcs = ["src/policy_iteration.cc"],
+    deps = [
+        "//common:macros",
+        "//constructs:finite_mdp", 
+        "//constructs:finite_policy",
+        "//constructs:finite_v_function",
+        "//third_party/Eigen:eigen",
+    ],
+)

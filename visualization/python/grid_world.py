@@ -219,6 +219,8 @@ def setup_grid_world(num_states):# {{{
         clock.tick(60)
 
     # Quitting and returning
+    pygame.display.quit()
+    pygame.quit()
     return cell_state
 
 # }}}

@@ -59,9 +59,8 @@ void IterativePolicyEvaluation::Evaluate(
     MatrixXd expected_value(num_states_, num_actions_);
 
     for (int i = 0; i < num_actions_; i++) {
-
-      expected_value.col(i) = mdp_->GetStateTransitionTensor()(i) * GetValueFunctionVector();
-
+      expected_value.col(i) = mdp_->GetStateTransitionTensor()(i) *
+        GetValueFunctionVector();
     }
 
     VectorXd expected_value_pi = (expected_value.array() * 

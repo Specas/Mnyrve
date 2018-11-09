@@ -16,7 +16,7 @@ class IterativePolicyEvaluation {
   public:
     IterativePolicyEvaluation(
         std::unique_ptr<mnyrve::constructs::FiniteMDP> mdp, 
-        std::unique_ptr<mnyrve::constructs::FinitePolicy> policy);
+        std::unique_ptr<mnyrve::constructs::FinitePolicy> init_policy);
 
     int GetNumStates();
     int GetNumActions();
