@@ -36,6 +36,7 @@ class GridWorld {
 
     void SetUp();
     void VisualizeValue(Eigen::VectorXd value);
+    void VisualizeValuePolicy(Eigen::VectorXd value, Eigen::VectorXd policy);
 
 
 

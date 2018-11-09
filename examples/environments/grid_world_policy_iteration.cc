@@ -15,6 +15,7 @@ using mnyrve::math::Tensor3;
 using mnyrve::constructs::FiniteMDP;
 using mnyrve::constructs::FinitePolicy;
 using Eigen::MatrixXd;
+using Eigen::VectorXd;
 
 using std::map;
 using std::move;
@@ -183,7 +184,22 @@ int do_main(int argc, char* argv[]) {
 
   // Solving for the value function
   solver.Evaluate(0.01);
-  grid_world.VisualizeValue(solver.GetValueFunctionVector());
+
+  // Obtaining the direction of movement from the policy
+  VectorXd policy_arrow(FLAGS_num_states);
+
+  for (int i = 0; i < FLAGS_num_states; i++) {
+
+    int ind_policy = 0;
+
+    // Get the position of 1 which is the maximum
+    solver.GetPolicyMatrix().row(i).maxCoeff(&ind_policy);
+    policy_arrow(i) = ind_policy;
+
+  }
+
+  grid_world.VisualizeValuePolicy(
+      solver.GetValueFunctionVector(), policy_arrow);
 
   return 0;
 

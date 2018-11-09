@@ -100,27 +100,27 @@ def draw_policy(screen, policy_color, policy_start_color, cell_state, policy, \
             # Left
             if policy[i] == 0:
                 pygame.draw.polygon(screen, color, \
-                        ((x + offset, y - offset), \
-                         (x + offset, y + offset), \
+                        ((x + offset, y + offset), \
+                         (x + offset, y - offset), \
                          (x - offset, y)))
             # Top
-            if policy[i] == 2:
-                pygame.draw.polygon(screen, color, \
-                        ((x - offset, y - offset), \
-                         (x + offset, y - offset), \
-                         (x, y + offset)))
-            # Right
             if policy[i] == 1:
-                pygame.draw.polygon(screen, color, \
-                        ((x - offset, y - offset), \
-                         (x - offset, y + offset), \
-                         (x + offset, y)))
-            # Bottom
-            if policy[i] == 3:
                 pygame.draw.polygon(screen, color, \
                         ((x - offset, y + offset), \
                          (x + offset, y + offset), \
                          (x, y - offset)))
+            # Right
+            if policy[i] == 2:
+                pygame.draw.polygon(screen, color, \
+                        ((x - offset, y + offset), \
+                         (x - offset, y - offset), \
+                         (x + offset, y)))
+            # Bottom
+            if policy[i] == 3:
+                pygame.draw.polygon(screen, color, \
+                        ((x - offset, y - offset), \
+                         (x + offset, y - offset), \
+                         (x, y + offset)))
 
 
 def setup_grid_world(num_states):# {{{
@@ -141,7 +141,7 @@ def setup_grid_world(num_states):# {{{
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
     BACKGROUND = (50, 50, 50)
-    CELL_NORMAL = (205, 205, 205)
+    CELL_NORMAL = (225, 225, 225)
     CELL_HIGHLIGHTED = (150, 150, 150)
     CELL_OBSTACLE = (109, 82, 148)
     CELL_START = (240, 209, 122)
@@ -299,7 +299,7 @@ def visualize_grid_solution(cell_state, value):# {{{
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
     BACKGROUND = (50, 50, 50)
-    CELL_NORMAL = (205, 205, 205)
+    CELL_NORMAL = (225, 225, 225)
     CELL_HIGHLIGHTED = (150, 150, 150)
     CELL_OBSTACLE = (109, 82, 148)
     CELL_START = (240, 209, 122)
@@ -340,6 +340,10 @@ def visualize_grid_solution(cell_state, value):# {{{
     done = False
     clock = pygame.time.Clock()
 
+    # Save directory
+    results_directory = 'results/'
+    file_name = 'value.png'
+
 
     """
     Draw and control loop -----------------------------------------------------
@@ -371,6 +375,10 @@ def visualize_grid_solution(cell_state, value):# {{{
         pygame.display.flip()
         clock.tick(60)
 
+    # Saving
+    print('Saving image.')
+    pygame.image.save(screen, results_directory + file_name)
+
 # }}}
 
 def visualize_grid_solution_with_policy(cell_state, value, policy):# {{{
@@ -394,9 +402,9 @@ def visualize_grid_solution_with_policy(cell_state, value, policy):# {{{
     BLACK = (0, 0, 0)
     WHITE = (255, 255, 255)
     BACKGROUND = (50, 50, 50)
-    POLICY = (180, 180, 180)
+    POLICY = (190, 190, 190)
     POLICY_START = (218, 180, 103)
-    CELL_NORMAL = (205, 205, 205)
+    CELL_NORMAL = (225, 225, 225)
     CELL_HIGHLIGHTED = (150, 150, 150)
     CELL_OBSTACLE = (109, 82, 148)
     CELL_START = (240, 209, 122)
@@ -438,6 +446,9 @@ def visualize_grid_solution_with_policy(cell_state, value, policy):# {{{
     done = False
     clock = pygame.time.Clock()
 
+    results_directory = 'results/'
+    file_name = 'value_with_policy.png'
+
 
     """
     Draw and control loop -----------------------------------------------------
@@ -473,6 +484,10 @@ def visualize_grid_solution_with_policy(cell_state, value, policy):# {{{
                     cell_size*cell_size_multiplier)
         pygame.display.flip()
         clock.tick(60)
+
+    # Saving
+    print('Saving image.')
+    pygame.image.save(screen, results_directory + file_name)
 
 # }}}
 

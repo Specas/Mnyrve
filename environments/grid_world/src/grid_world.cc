@@ -154,7 +154,6 @@ void GridWorld::SetUp() {
   Py_XDECREF(pFunc);
   Py_XDECREF(pName);
 
-
 }
 
 void GridWorld::VisualizeValue(Eigen::VectorXd value) {
@@ -256,8 +255,121 @@ void GridWorld::VisualizeValue(Eigen::VectorXd value) {
   Py_XDECREF(pFunc);
   Py_XDECREF(pName);
 
+}
+
+void GridWorld::VisualizeValuePolicy(
+    Eigen::VectorXd value, Eigen::VectorXd policy) {
+
+  MN_REQUIRE((value.size() == num_states_), 
+      "Value function size does not match state size.");
+
+  PyObject *pName, *pModule, *pFunc;
+  PyObject *pArgs, *pCellState, *pValueFunction, *pPolicy, *pElem; 
+  PyObject *sysPath, *pythonPath;
+
+  Py_Initialize();
+
+  // Reading the python paths from the text file in data/
+  std::ifstream python_paths_file("tools/data/python_paths.txt");
+
+  if (!python_paths_file) {
+    std::cerr << "Unable to open python_paths.txt" << std::endl;
+    exit(-3);
+  }
+
+  sysPath = PySys_GetObject("path");
+  std::string python_path;
+
+  while (std::getline(python_paths_file, python_path)) {
+
+    pythonPath = PyUnicode_DecodeFSDefault(python_path.c_str());
+    PyList_Append(sysPath, pythonPath);
+
+  }
+
+  std::string python_filel_name = "grid_world";
+  std::string python_function_name = "visualize_grid_solution_with_policy";
+  pName = PyUnicode_DecodeFSDefault(python_filel_name.c_str());
+  pModule = PyImport_Import(pName);
+
+
+  if (pModule != NULL) {
+
+    pFunc = PyObject_GetAttrString(pModule, python_function_name.c_str());
+
+    if (pFunc && PyCallable_Check(pFunc)) {
+
+      pArgs = PyTuple_New(3);
+      pValueFunction = PyList_New(num_states_);
+      pCellState = PyList_New(num_states_);
+      pPolicy = PyList_New(num_states_);
+
+      int set_error_code;
+
+      // Creating the cell state and value function lists
+      for (int i = 0; i < num_states_; i++) {
+
+        pElem = PyFloat_FromDouble(cell_state_.at(i));
+        set_error_code = PyList_SetItem(pCellState, i, pElem);
+        MN_REQUIRE((set_error_code == 0), 
+            "Failed to add element to value.");
+
+        pElem = PyFloat_FromDouble(value(i));
+        set_error_code = PyList_SetItem(pValueFunction, i, pElem);
+        MN_REQUIRE((set_error_code == 0), 
+            "Failed to add element to value.");
+
+        pElem = PyFloat_FromDouble(policy(i));
+        set_error_code = PyList_SetItem(pPolicy, i, pElem);
+        MN_REQUIRE((set_error_code == 0), 
+            "Failed to add element to value.");
+
+      }
+
+      // Adding all the lists to the argument tuple
+      set_error_code = PyTuple_SetItem(pArgs, 0, pCellState);
+      MN_REQUIRE((set_error_code == 0), 
+          "Failed to add cell state list to argument.");
+
+      set_error_code = PyTuple_SetItem(pArgs, 1, pValueFunction);
+      MN_REQUIRE((set_error_code == 0), 
+          "Failed to add cell state list to argument.");
+
+      set_error_code = PyTuple_SetItem(pArgs, 2, pPolicy);
+      MN_REQUIRE((set_error_code == 0), 
+          "Failed to add cell state list to argument.");
+
+      PyObject_CallObject(pFunc, pArgs);
+
+    } else {
+
+      std::cerr << "Cannot find function." << std::endl;
+      PyErr_Print();
+      exit(-3);
+
+    }
+
+  } else {
+
+    PyErr_Print();
+    std::cerr << "Cannot find file." << std::endl;
+    exit(-3);
+
+  }
+
+  Py_XDECREF(pythonPath);
+  Py_XDECREF(sysPath);
+  Py_XDECREF(pElem);
+  Py_XDECREF(pPolicy);
+  Py_XDECREF(pValueFunction);
+  Py_XDECREF(pCellState);
+  Py_XDECREF(pArgs);
+  Py_XDECREF(pFunc);
+  Py_XDECREF(pFunc);
+  Py_XDECREF(pName);
 
 }
+
 
 } // namespace environments
 } // namespace mnyrve
