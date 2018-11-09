@@ -50,14 +50,14 @@ The following figure gives the result of a 10 armed bandit problem  where each r
 
 -------
 
-### Iterative policy evaluation
+### Policy Iteration
 
-The value function for each state in a grid world MDP, evaluating a policy that can take each of the four actions with equal probability is shown below. <br/>
+The results of running policy iteration on a grid world is shown below. The numbers denote the value function for each state, while the arrows represent the optimal policy. <br/>
 
 <br/>
 
 <p align="center">
-<img src="https://drive.google.com/uc?export=view&id=1-h4oJhzqdgcVxgTlWoQGJyLQUH7VW2qD" alt="Grid world" width="500"/> 
+<img src="https://drive.google.com/uc?export=view&id=1gJgkCGQSKTDWGx_6OzC7Rg1Dn-nhVFQO" alt="Grid world" width="500"/> 
 </p>
 
 <br/>
