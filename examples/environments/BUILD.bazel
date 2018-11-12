@@ -21,4 +21,16 @@ cc_binary(
         "@gflags_repo//:gflags",
     ], 
 )
+
+cc_binary(
+    name = "grid_world_value_iteration", 
+    srcs = ["grid_world_value_iteration.cc"], 
+    deps = [
+        "//algorithms:value_iteration",
+        "//common:macros", 
+        "//environments:grid_world", 
+        "@gflags_repo//:gflags",
+    ], 
+)
+ 
     
