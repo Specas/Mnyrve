@@ -24,7 +24,12 @@ Currently, the build has only been tested for C++14, running on Ubuntu Trusty an
   * [Pygame](https://www.pygame.org/)
 
 ### Building
-To build the current version, clone the repository and run:  
+To build the current version, first clone the repository:<br/>
+`git clone https://github.com/shrenikm/Mnyrve.git`<br/><br/>
+Run the pre install shell script:<br/>
+`cd Mnyrve`<br/>
+`./pre_build`<br/><br/>
+Then build using Bazel: <br/>
 `bazel build ...`<br/><br/>
 To build the tests, run:    
 `bazel test ...`<br/><br/>
@@ -50,9 +55,9 @@ The following figure gives the result of a 10 armed bandit problem  where each r
 
 -------
 
-### Policy Iteration
+### Value Iteration
 
-The results of running policy iteration on a grid world is shown below. The numbers denote the value function for each state, while the arrows represent the optimal policy. <br/>
+The results of running value iteration on a grid world is shown below. The numbers denote the value function for each state, while the arrows represent the optimal policy. <br/>
 
 <br/>
 
