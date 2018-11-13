@@ -31,3 +31,14 @@ cc_test(
         "//math:tensor3",
     ]
 )
+
+cc_test(
+    name = "value_iteration_test",
+    srcs = ["value_iteration_test.cc"],
+    copts = ["-Iexternal/gtest/include"],
+    deps = [
+        "@gtest//:main", 
+        "//algorithms:value_iteration",
+        "//math:tensor3",
+    ]
+)
