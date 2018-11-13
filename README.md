@@ -26,8 +26,10 @@ Currently, the build has only been tested for C++14, running on Ubuntu Trusty an
 ### Building
 To build the current version, first clone the repository:<br/>
 `git clone https://github.com/shrenikm/Mnyrve.git`<br/><br/>
-Then build using Bazel: <br/>
+Run the pre install shell script:<br/>
 `cd Mnyrve`<br/>
+`./pre_build`<br/><br/>
+Then build using Bazel: <br/>
 `bazel build ...`<br/><br/>
 To build the tests, run:    
 `bazel test ...`<br/><br/>
