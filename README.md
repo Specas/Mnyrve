@@ -13,7 +13,7 @@ Ubuntu (14.04 and 16.04) | [![Build Status](https://travis-ci.com/shrenikm/Mnyrv
 ## Installation
 
 Mnyrve is built using [Bazel](https://bazel.build/). 
-Currently, the build has only been tested for C++14, running on Ubuntu Trusty and Xenail.
+Currently, the build has only been tested for C++14, running on Ubuntu Trusty and Xenial.
 
 ### Requirements
 * Ubuntu 14.04 or 16.04 (Build tested for these two versions)
